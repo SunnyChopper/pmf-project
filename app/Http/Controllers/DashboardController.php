@@ -9,7 +9,7 @@ class DashboardController extends Controller
     public function index() {
     	$page_title = "Main Dashboard";
     	$user = array(
-    		'name' => 'Ishy Singh',
+    		'name' => 'Sunny Singh',
     		'email' => 'ishy.singh@gmail.com'
     	);
     	return view('dashboard.index')->with('page_title', $page_title)->with('user', $user);
@@ -18,7 +18,7 @@ class DashboardController extends Controller
     public function landing_pages() {
     	$page_title = "Landing Pages";
     	$user = array(
-    		'name' => 'Ishy Singh',
+    		'name' => 'Sunny Singh',
     		'email' => 'ishy.singh@gmail.com'
     	);
     	return view('dashboard.landing-pages')->with('page_title', $page_title)->with('user', $user);
