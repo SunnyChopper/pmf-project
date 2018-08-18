@@ -24,10 +24,7 @@
                     <a href="/landing-pages/"><i class="fas fa-file"></i>Landing Pages</a>
                 </li>
                 <li>
-                    <a href="/funnels/"><i class="fas fa-filter"></i>Funnels</a>
-                </li>
-                <li>
-                    <a href="/tags/"><i class="fas fa-tag"></i>Tags</a>
+                    <a href="/signups/"><i class="fas fa-user"></i>Signups</a>
                 </li>
             </ul>
         </div>
@@ -52,10 +49,7 @@
                     <a href="/landing-pages/"><i class="fas fa-file"></i>Landing Pages</a>
                 </li>
                 <li>
-                    <a href="/funnels/"><i class="fas fa-filter"></i>Funnels</a>
-                </li>
-                <li>
-                    <a href="/tags/"><i class="fas fa-tag"></i>Tags</a>
+                    <a href="/signups/"><i class="fas fa-user"></i>Signups</a>
                 </li>
             </ul>
         </nav>

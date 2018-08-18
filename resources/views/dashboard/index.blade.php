@@ -70,6 +70,7 @@
                             <tr>
                                 <th>Starting Date</th>
                                 <th>Idea Campaign</th>
+                                <th>Landing Pages</th>
                                 <th>Impressions</th>
                                 <th>Signups</th>
                                 <th></th>
@@ -79,6 +80,7 @@
                             <tr>
                                 <td>August 3rd, 2018</td>
                                 <td>Product-Market Fit Software Tool</td>
+                                <td>2</td>
                                 <td>249</td>
                                 <td>23</td>
                                 <td><a href="" class="btn btn-warning">Edit</a></td>

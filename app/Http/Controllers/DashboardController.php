@@ -23,4 +23,13 @@ class DashboardController extends Controller
     	);
     	return view('dashboard.landing-pages')->with('page_title', $page_title)->with('user', $user);
     }
+
+    public function signups() {
+        $page_title = "Signups";
+        $user = array(
+            'name' => 'Sunny Singh',
+            'email' => 'ishy.singh@gmail.com'
+        );
+        return view('dashboard.signups')->with('page_title', $page_title)->with('user', $user);
+    }
 }

@@ -13,3 +13,4 @@
 
 Route::get('/', 'DashboardController@index');
 Route::get('/landing-pages/', 'DashboardController@landing_pages');
+Route::get('/signups/', 'DashboardController@signups');
