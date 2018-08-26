@@ -14,3 +14,18 @@
 Route::get('/', 'DashboardController@index');
 Route::get('/landing-pages/', 'DashboardController@landing_pages');
 Route::get('/signups/', 'DashboardController@signups');
+
+// Ideas
+Route::get('/dashboard/idea/create', 'DashboardController@create_idea');
+Route::get('/dashboard/idea/edit/{idea_id}', 'DashboardController@edit_idea');
+Route::post('/idea/create', 'IdeasController@create');
+Route::post('/idea/edit/{idea_id}', 'IdeasController@edit');
+
+// Landing Pages
+Route::get('/dashboard/lp/create/choose-template/', 'LandingPageController@choose_template');
+Route::get('/dashboard/lp/create/customize/{template_id}', 'LandingPageController@customize');
+Route::post('/lp/render/{template_id}', 'LandingPageController@render');
+Route::post('/lp/publish/{template_id}', 'LandingPageController@publish');
+Route::get('/lp/{user_id}/{landing_page_id}', 'LandingPageController@view');
+Route::get('/dashboard/lp/test', 'LandingPageController@test');
+Route::get('/check', 'LandingPageController@test_xml');

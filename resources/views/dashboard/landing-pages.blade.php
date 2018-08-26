@@ -3,38 +3,63 @@
 @section('content')
 	<div class="container">
 		<div class="row">
-			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-				<h2>Landing Pages</h2>
-			</div>
-		</div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="overview-wrap">
+                    <h2 class="title-1">Landing Pages</h2>
+                    @if(count($landing_pages) != 0)
+                    <a href="/dashboard/lp/create/choose-template"><button class="au-btn au-btn-icon au-btn--blue"><i class="zmdi zmdi-plus"></i>New Landing Page</button></a>
+                    @endif
+                </div>
+            </div>
+        </div>
 
-		<div class="row m-t-40">
-			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-				<div class="table-responsive table--no-card m-b-40">
-					<table class="table table-borderless table-striped table-earning">
-						<thead>
-							<tr>
-								<th>Name</th>
-								<th>Idea Campaign</th>
-								<th>Funnel</th>
-								<th>Impressions</th>
-								<th>Signups</th>
-								<th></th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>Free Trial Offer</td>
-								<td>Product-Market Fit Software Tool</td>
-								<td>Trial Funnel</td>
-								<td>128</td>
-								<td>18</td>
-								<td><a href="" class="btn btn-warning">Edit</a></td>
-							</tr>
-						</tbody>
-					</table>
+        @if(count($landing_pages) != 0)
+			<div class="row m-t-40">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="table-responsive table--no-card m-b-40">
+						<table class="table table-borderless table-striped table-earning">
+							<thead>
+								<tr>
+									<th>Created On</th>
+									<th>Name</th>
+									<th>Idea</th>
+									<th>Impressions</th>
+									<th>Signups</th>
+									<th></th>
+								</tr>
+							</thead>
+							<tbody>
+								@foreach($landing_pages as $landing_page)
+									<tr>
+										<td>{{ $landing_page->created_at->format('F d, Y') }}</td>
+										<td>{{ $landing_page->name }}</td>
+										<td>{{ $landing_page->idea_name }}</td>
+										<td>{{ $landing_page->impressions }}</td>
+										<td>{{ $landing_page->signups }}</td>
+										<td>
+											<a href="/dashboard/lp/edit/{{ $landing_page->id }}" class="btn btn-warning">Edit</a>
+											<a href="/lp/1/{{ $landing_page->id }}" class="btn btn-primary">View</a>
+										</td>
+									</tr>
+								@endforeach
+							</tbody>
+						</table>
+					</div>
 				</div>
 			</div>
-		</div>
+		@else
+			<div class="row mt-16">
+	            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+	                <div class="well">
+	                    <p class="text-center">Seems like you haven't created any landing pages yet. Click below to get started.</p>
+	                    <div class="row">
+	                        <div class="col-lg-2 offset-lg-5">
+	                            <a href="/dashboard/lp/create/choose-template" class="btn btn-primary center-button mt-16">Get Started</a>
+	                        </div>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+		@endif
 	</div>
 @endsection

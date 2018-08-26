@@ -13,7 +13,7 @@
                     <div class="account-wrap">
                         <div class="account-item clearfix js-item-menu">
                             <div class="image">
-                                <img src="images/icon/avatar-01.jpg" alt="{{ $user["name"] }}" />
+                                <img src="{{ URL::asset('images/icon/avatar-01.jpg') }}" alt="{{ $user["name"] }}" />
                             </div>
                             <div class="content">
                                 <a class="js-acc-btn" href="#">{{ $user["name"] }}</a>
@@ -22,7 +22,7 @@
                                 <div class="info clearfix">
                                     <div class="image">
                                         <a href="#">
-                                            <img src="images/icon/avatar-01.jpg" alt="{{ $user["name"] }}" />
+                                            <img src="{{ URL::asset('images/icon/avatar-01.jpg') }}" alt="{{ $user["name"] }}" />
                                         </a>
                                     </div>
                                     <div class="content">
