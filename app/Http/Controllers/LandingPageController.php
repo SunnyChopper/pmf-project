@@ -68,7 +68,7 @@ class LandingPageController extends Controller
     	return view('dashboard.customize-template')->with('page_title', $page_title)->with('user', $user)->with('xml_tags', $xml_tags)->with('template_id', $template_id)->with('ideas', $ideas);
 	}
 
-	public function render(Request $data, $template_id) {
+	public function render(Request $data, $template_id, $mode) {
 		// Page details
 		$page_title = "Customize Your Template";
 
@@ -85,7 +85,12 @@ class LandingPageController extends Controller
     	// Get XML fields for the template
     	$xml_tags = $this->get_xml_tags($template_id);
 		
-		return view($path_to_html)->with('data', $data)->with('template_id', $template_id)->with('xml_tags', $xml_tags);
+		// Check to see if in edit mode
+		if ($mode == "edit") {
+			return view($path_to_html)->with('data', $data)->with('template_id', $template_id)->with('xml_tags', $xml_tags)->with('mode', $mode)->with('landing_page_id', $data->landing_page_id);
+		} else {
+			return view($path_to_html)->with('data', $data)->with('template_id', $template_id)->with('xml_tags', $xml_tags)->with('mode', $mode);
+		}
 	}
 
 	public function publish(Request $data, $template_id) {
@@ -93,13 +98,12 @@ class LandingPageController extends Controller
 		$user_id = 1;
 
 		// Get idea info
-		// TODO: Get idea info from hidden input
-		$idea_id = 1;
-		$idea_name = "Test Idea #1";
+		$idea_id = $data->idea_id;
+		$idea = Idea::where('id', $idea_id)->first();
+		$idea_name = $idea->name;
 
 		// Get landing page data
-		// TODO: Get landing page data from hidden input
-		$landing_page_name = "Testing Landing Page";
+		$landing_page_name = $data->landing_page_name;
 		$landing_page_preview_link = "";
 
 		// Get template info
@@ -115,6 +119,7 @@ class LandingPageController extends Controller
 		$landing_page->landing_page_template_path = $path_to_html;
 		$landing_page->impressions = 0;
 		$landing_page->signups = 0;
+		$landing_page->template_id = $template_id;
 		$landing_page->save();
 		$landing_page_id = $landing_page->id;
 
@@ -159,6 +164,80 @@ class LandingPageController extends Controller
 
 		// Get HTML
 		return view($template_path)->with('xml_data', $xml_data);
+	}
+
+	public function edit($landing_page_id) {
+		// Page data
+		$page_title = "Edit Landing Page";
+
+		// Get user
+    	$user = array(
+    		'name' => 'Sunny Singh',
+    		'email' => 'ishy.singh@gmail.com'
+    	);
+
+		// Get landing page
+		$landing_page = LandingPage::where('id', $landing_page_id)->first();
+		$xml_data = $this->read_xml('local', $landing_page->xml_link);
+		$xml_tags = $this->get_xml_tags($landing_page->template_id);
+
+		// Get ideas for user
+    	$user_id = 1;
+    	$ideas = Idea::where('user_id', $user_id)->get();
+
+		return view('dashboard.edit-landing-page')->with('page_title', $page_title)->with('user', $user)->with('landing_page', $landing_page)->with('xml_data', $xml_data)->with('xml_tags', $xml_tags)->with('template_id', $landing_page->template_id)->with('ideas', $ideas);
+	}
+
+	public function edit_data(Request $data, $landing_page_id) {
+		// Get user info
+		$user_id = 1;
+
+		// Get landing page
+		$landing_page = LandingPage::where('id', $landing_page_id)->first();
+
+		// Check if idea changed
+		$new_idea_id = $data->idea_id;
+		if ($new_idea_id != $landing_page->idea_id) {
+			// Change landing_pages variables
+			$original_idea = Idea::where('id', $landing_page->idea_id)->first();
+			$new_idea = Idea::where('id', $new_idea_id)->first();
+
+			// Number of landing pages that belong to idea
+			$original_idea->landing_pages = $original_idea->landing_pages - 1;
+			$new_idea->landing_pages = $new_idea->landing_pages + 1;
+
+			// Name and ID of idea
+			$landing_page->idea_name = $new_idea->name;
+			$landing_page->idea_id = $new_idea_id;
+
+			// Save
+			$original_idea->save();
+			$new_idea->save();
+			$landing_page->save();
+		}
+
+		// Check if landing page name changed
+		$new_landing_page_name = $data->landing_page_name;
+		if ($new_landing_page_name != $landing_page->name) {
+			// Update
+			$landing_page->name = $new_landing_page_name;
+			$landing_page->save();
+		}
+
+		// Get XML fields for the template
+    	$xml_tags = $this->get_xml_tags($landing_page->template_id);
+    	$tags = array();
+    	$values = array();
+    	foreach($xml_tags as $tag => $value) {
+    		array_push($tags, $tag);
+    		array_push($values, $data->$tag);
+    	}
+
+		// Edit XML
+		$this->edit_xml($user_id, $landing_page_id, $tags, $values);
+
+		// Redirect
+		return redirect(url('/landing-pages/'));
 	}
 
 	public function test_xml() {

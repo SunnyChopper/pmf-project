@@ -24,8 +24,10 @@ Route::post('/idea/edit/{idea_id}', 'IdeasController@edit');
 // Landing Pages
 Route::get('/dashboard/lp/create/choose-template/', 'LandingPageController@choose_template');
 Route::get('/dashboard/lp/create/customize/{template_id}', 'LandingPageController@customize');
-Route::post('/lp/render/{template_id}', 'LandingPageController@render');
+Route::get('/dashboard/lp/edit/{landing_page_id}', 'LandingPageController@edit');
+Route::post('/lp/render/{template_id}/{mode}', 'LandingPageController@render');
 Route::post('/lp/publish/{template_id}', 'LandingPageController@publish');
+Route::post('/lp/edit/{landing_page_id}', 'LandingPageController@edit_data');
 Route::get('/lp/{user_id}/{landing_page_id}', 'LandingPageController@view');
 Route::get('/dashboard/lp/test', 'LandingPageController@test');
 Route::get('/check', 'LandingPageController@test_xml');
