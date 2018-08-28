@@ -10,6 +10,7 @@
 			</div>
 		</div>
 
+		@if(count($ideas) != 0)
 		<div class="row">
 			<div class="col-lg-8 col-md-10 col-sm-12 col-xs-12">
 				<form id="create_lp_form" method="post" action="/lp/render/{{ $template_id }}">
@@ -49,6 +50,15 @@
 				</form>
 			</div>
 		</div>
+		@else
+		<div class="row mt-32">
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				<div class="well">
+					<p class="text-center">Uh oh! Seems like you haven't created any ideas. You must first create an idea before you can add landing pages!</p>
+				</div>
+			</div>
+		</div>
+		@endif
 
 		@include('layouts.footer')
 	</div>

@@ -58,10 +58,14 @@ class LandingPageController extends Controller
     		'email' => 'ishy.singh@gmail.com'
     	);
 
+    	// Get ideas for user
+    	$user_id = 1;
+    	$ideas = Idea::where('user_id', $user_id)->get();
+
     	// Get XML fields for the template
     	$xml_tags = $this->get_xml_tags($template_id);
 
-    	return view('dashboard.customize-template')->with('page_title', $page_title)->with('user', $user)->with('xml_tags', $xml_tags)->with('template_id', $template_id);
+    	return view('dashboard.customize-template')->with('page_title', $page_title)->with('user', $user)->with('xml_tags', $xml_tags)->with('template_id', $template_id)->with('ideas', $ideas);
 	}
 
 	public function render(Request $data, $template_id) {
