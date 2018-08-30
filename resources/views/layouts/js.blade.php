@@ -21,3 +21,6 @@
 
 <!-- Main JS-->
 <script src="{{ URL::asset('js/main.js') }}"></script>
+
+<!-- Custom JS -->
+<script src="{{ URL::asset('js/custom.js') }}"></script>

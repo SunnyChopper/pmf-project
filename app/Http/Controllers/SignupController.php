@@ -7,6 +7,35 @@ use App\Signup;
 
 class SignupController extends Controller
 {
+	/* CRUD Public Functions */
+	public function create(Request $data) {
+		if ($this->create_signup($data) == true) {
+			return "Successful";
+		} else {
+			return "Failed";
+		}
+	}
+
+	public function read($signup_id) {
+		return $this->read_signup($signup_id)->toJson();
+	}
+
+	public function update(Request $data) {
+		if ($this->update_signup($data, $data->signup_id) == true) {
+			return "Successful";
+		} else {
+			return "Failed";
+		}
+	}
+
+	public function delete($signup_id) {
+		if ($this->delete_signup($signup_id) == true) {
+			return "Successful";
+		} else {
+			return "Failed";
+		}
+	}
+
 	/* CRUD Private Functions */
 	private function create_signup($data) {
 		// Gather relevant data
