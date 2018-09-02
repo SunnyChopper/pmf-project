@@ -149,8 +149,8 @@ class LandingPageController extends Controller
 		$idea->landing_pages = $idea->landing_pages + 1;
 		$idea->save();
 
-		// Redirect
-		return redirect(url('/'));
+		// Redirect back to landing pages
+		return redirect(url('/dashboard/landing-pages/'));
 	}
 
 	public function view($user_id, $landing_page_id) {
@@ -236,8 +236,8 @@ class LandingPageController extends Controller
 		// Edit XML
 		$this->edit_xml($user_id, $landing_page_id, $tags, $values);
 
-		// Redirect
-		return redirect(url('/landing-pages/'));
+		// Redirect to landing pages
+		return redirect(url('/dashboard/landing-pages/'));
 	}
 
 	public function test_xml() {

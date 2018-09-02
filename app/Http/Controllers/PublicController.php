@@ -11,4 +11,10 @@ class PublicController extends Controller
 
     	return view('public.index')->with('page_title', $page_title);
     }
+
+    public function solutions() {
+    	$page_title = config('app.name') . " - Home";
+
+    	return view('public.solutions')->with('page_title', $page_title);
+    }
 }

@@ -46,6 +46,7 @@
 		<!--[if lt IE 9]>
 		<script src="js/respond.min.js"></script>
 		<![endif]-->
+		<link href="{{ URL::asset('css/style.css') }}" rel="stylesheet" media="all">
 
 	</head>
 	<body>

@@ -3,23 +3,21 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-2">
-					<div id="colorlib-logo"><a href="index.html">{{ config('app.name') }}</a></div>
+					<div id="colorlib-logo"><a href="/">{{ config('app.name') }}</a></div>
 				</div>
 				<div class="col-md-10 text-right menu-1">
 					<ul>
-						<li class="active"><a href="index.html">Home</a></li>
+						<li><a href="/">Home</a></li>
+						<li><a href="/solutions">Solutions</a></li>
+						<li><a href="/blog">Blog</a></li>
+						<li><a href="contact.html">Contact</a></li>
 						<li class="has-dropdown">
-							<a href="work.html">Works</a>
+							<a href="">Members</a>
 							<ul class="dropdown">
-								<li><a href="work-grid.html">Works grid with text</a></li>
-								<li><a href="work-grid-without-text.html">Works grid w/o text</a></li>
+								<li><a href="/login">Login</a></li>
+								<li><a href="/register">Register</a></li>
 							</ul>
 						</li>
-						<li><a href="services.html">Services</a></li>
-						<li><a href="blog.html">Blog</a></li>
-						<li><a href="about.html">About</a></li>
-						<li><a href="shop.html">Shop</a></li>
-						<li><a href="contact.html">Contact</a></li>
 					</ul>
 				</div>
 			</div>

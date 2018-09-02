@@ -25,8 +25,8 @@ class IdeasController extends Controller
     	$idea->signups = 0;
     	$idea->save();
 
-    	// Redirect to homepage
-    	return redirect(url('/'));
+    	// Redirect to dashboard
+    	return redirect(url('/dashboard/'));
     }
 
     public function edit(Request $data, $idea_id) {
@@ -45,7 +45,7 @@ class IdeasController extends Controller
     		$idea->save();
 
     		// Redirect to dashboard
-    		return redirect(url('/'));
+    		return redirect(url('/dashboard/'));
     	} else {
     		// Return back
     		return redirect()->back();

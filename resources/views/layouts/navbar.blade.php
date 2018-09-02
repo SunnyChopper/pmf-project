@@ -18,13 +18,13 @@
         <div class="container-fluid">
             <ul class="navbar-mobile__list list-unstyled">
                 <li>
-                    <a href="/"><i class="fas fa-tachometer-alt"></i>Dashboard</a>
+                    <a href="/dashboard/"><i class="fas fa-tachometer-alt"></i>Dashboard</a>
                 </li>
                 <li>
-                    <a href="/landing-pages/"><i class="fas fa-file"></i>Landing Pages</a>
+                    <a href="/dashboard/landing-pages/"><i class="fas fa-file"></i>Landing Pages</a>
                 </li>
                 <li>
-                    <a href="/signups/"><i class="fas fa-user"></i>Signups</a>
+                    <a href="/dashboard/signups/"><i class="fas fa-user"></i>Signups</a>
                 </li>
             </ul>
         </div>
@@ -43,13 +43,13 @@
         <nav class="navbar-sidebar">
             <ul class="list-unstyled navbar__list">
                 <li>
-                    <a href="/"><i class="fas fa-tachometer-alt"></i>Dashboard</a>
+                    <a href="/dashboard/"><i class="fas fa-tachometer-alt"></i>Dashboard</a>
                 </li>
                 <li>
-                    <a href="/landing-pages/"><i class="fas fa-file"></i>Landing Pages</a>
+                    <a href="/dashboard/landing-pages/"><i class="fas fa-file"></i>Landing Pages</a>
                 </li>
                 <li>
-                    <a href="/signups/"><i class="fas fa-user"></i>Signups</a>
+                    <a href="/dashboard/signups/"><i class="fas fa-user"></i>Signups</a>
                 </li>
             </ul>
         </nav>
