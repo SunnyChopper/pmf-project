@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class UpdateXmlInfoTable extends Migration
+class UpdateUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class UpdateXmlInfoTable extends Migration
      */
     public function up()
     {
-        Schema::table('xml_info', function($table) {
-            // Delete the column
-            $table->dropColumn('landing_page_id');
+        Schema::table('users', function($table) {
+            $table->string('customer_id', 512)->nullable()->change();
+            $table->string('sub_id', 512)->nullable()->change();
         });
     }
 
@@ -26,6 +26,6 @@ class UpdateXmlInfoTable extends Migration
      */
     public function down()
     {
-        //
+        
     }
 }
