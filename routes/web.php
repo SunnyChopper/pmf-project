@@ -11,6 +11,9 @@
 |
 */
 
+// Public
+Route::get('/public/index', 'PublicController@index');
+
 Route::get('/', 'DashboardController@index');
 Route::get('/landing-pages/', 'DashboardController@landing_pages');
 Route::get('/signups/', 'DashboardController@signups');
@@ -31,3 +34,6 @@ Route::post('/lp/edit/{landing_page_id}', 'LandingPageController@edit_data');
 Route::get('/lp/{user_id}/{landing_page_id}', 'LandingPageController@view');
 Route::get('/dashboard/lp/test', 'LandingPageController@test');
 Route::get('/check', 'LandingPageController@test_xml');
+
+// Signups
+Route::post('/signups/create', 'SignupsController@create');

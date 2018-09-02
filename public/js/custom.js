@@ -25,3 +25,16 @@ $(".create-signup").on('click', function() {
 		}
 	});
 });
+
+/* -------------------------- *\
+	Modal functions
+\* -------------------------- */
+
+function showDeleteSignupModal(signup_id) {
+	// Set the hidden input
+	$("input[name=signup_id]").val(signup_id);
+
+	// Show the modal
+	$("#delete_signup_modal").appendTo("body");
+	$("#delete_signup_modal").modal('show');
+}

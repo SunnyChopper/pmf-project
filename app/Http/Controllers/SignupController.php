@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Signup;
+use App\LandingPage;
 
 class SignupController extends Controller
 {
@@ -49,6 +50,10 @@ class SignupController extends Controller
 		$first_name = $name_array[0];
 		$last_name = $name_array[1];
 
+		// Get landing page data and get who it belongs to
+		$landing_page = LandingPage::where('id', $landing_page_id)->first();
+		$user_id = $landing_page->user_id;
+
 		// Create Signup object and save
 		$signup = new Signup;
 		$signup->landing_page_id = $landing_page_id;
@@ -56,6 +61,7 @@ class SignupController extends Controller
 		$signup->last_name = $last_name;
 		$signup->email = $email;
 		$signup->marketing_consent = $marketing_consent;
+		$signup->user_id = $user_id;
 		return $signup->save();
 	}
 

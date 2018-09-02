@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Idea;
 use App\LandingPage;
+use App\Signup;
 
 class DashboardController extends Controller
 {
@@ -66,11 +67,18 @@ class DashboardController extends Controller
 
     public function signups() {
         $page_title = "Signups";
+
+        // Get user
         $user = array(
             'name' => 'Sunny Singh',
             'email' => 'ishy.singh@gmail.com'
         );
-        return view('dashboard.signups')->with('page_title', $page_title)->with('user', $user);
+
+        // Get Signups
+        $user_id = 1;
+        $signups = Signup::where('user_id', $user_id)->get();
+
+        return view('dashboard.signups')->with('page_title', $page_title)->with('user', $user)->with('signups', $signups);
     }
 
     public function create_idea() {
