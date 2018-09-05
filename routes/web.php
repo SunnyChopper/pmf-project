@@ -14,10 +14,20 @@
 // Public site
 Route::get('/', 'PublicController@index');
 Route::get('/solutions', 'PublicController@solutions');
+Route::get('/start-trial', 'PublicController@trial');
 
+// Check out
+Route::post('/register/free-trial', 'UsersController@start_trial');
+
+// Testing
+Route::post('/test', 'CheckoutController@test');
+Route::get('/checkout', 'PublicController@checkout');
+
+// Dashboard
 Route::get('/dashboard/', 'DashboardController@index');
 Route::get('/dashboard/landing-pages/', 'DashboardController@landing_pages');
 Route::get('/dashboard/signups/', 'DashboardController@signups');
+Route::get('/trial-ended', 'DashboardController@trial_ended');
 
 // Ideas
 Route::get('/dashboard/idea/create', 'DashboardController@create_idea');

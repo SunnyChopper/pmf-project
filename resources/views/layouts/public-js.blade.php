@@ -19,3 +19,5 @@
 <script src="{{ URL::asset('public_site/js/jquery.countTo.js') }}"></script>
 <!-- Main -->
 <script src="{{ URL::asset('public_site/js/main.js') }}"></script>
+{{-- <script src="{{ URL::asset('js/stripe-handler.js') }}"></script> --}}
+@yield('page_js')

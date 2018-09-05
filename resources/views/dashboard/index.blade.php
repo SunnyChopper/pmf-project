@@ -111,3 +111,11 @@
         @include('layouts.footer')
     </div>
 @endsection
+
+@section('public_js')
+    <script type="text/javascript">
+        $(document).ready(function() {
+            window.location.reload(true);
+        });
+    </script>
+@endsection

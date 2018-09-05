@@ -110,6 +110,15 @@
 }
 
 /* ------------------------- *\
+	Colors
+\* ------------------------- */
+
+.red {
+	color: red;
+}
+
+
+/* ------------------------- *\
 	Buttons
 \* ------------------------- */
 
@@ -183,3 +192,28 @@
 	margin-right: auto;
 	text-align: center;
 }
+
+#banner-home {
+	height: 300px; 
+	background-size:cover;
+	background-position: center center;
+	background-attachment:fixed;
+}
+
+#page_header {
+	margin-bottom: 128px;
+}
+
+/* ------------------------- *\
+	Media Queries
+\* ------------------------- */
+
+@media only screen and (max-width : 480px) {
+	#banner-home {
+		height: 200px;
+	}
+
+	#page_header {
+		margin-bottom: 350px;
+	}
+}	

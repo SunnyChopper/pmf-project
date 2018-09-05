@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Idea;
 use App\LandingPage;
 use App\Signup;
+use App\User;
+use Session;
 
 class DashboardController extends Controller
 {
@@ -13,13 +15,10 @@ class DashboardController extends Controller
     	$page_title = "Main Dashboard";
 
         // Get user
-    	$user = array(
-    		'name' => 'Sunny Singh',
-    		'email' => 'ishy.singh@gmail.com'
-    	);
+    	$user = $this->get_user();
 
         // Get ideas
-        $user_id = 1;
+        $user_id = $user->id;
         $ideas = Idea::where('user_id', $user_id)->get();
 
         // Calculate stats
@@ -53,11 +52,8 @@ class DashboardController extends Controller
     	$page_title = "Landing Pages";
 
         // Get user
-        $user_id = 1;
-    	$user = array(
-    		'name' => 'Sunny Singh',
-    		'email' => 'ishy.singh@gmail.com'
-    	);
+        $user = $this->get_user();
+        $user_id = $user->id;
 
         // Get landing pages from user
         $landing_pages = LandingPage::where('user_id', $user_id)->get();
@@ -69,13 +65,11 @@ class DashboardController extends Controller
         $page_title = "Signups";
 
         // Get user
-        $user = array(
-            'name' => 'Sunny Singh',
-            'email' => 'ishy.singh@gmail.com'
-        );
+        // Get user
+        $user = $this->get_user();
+        $user_id = $user->id;
 
         // Get Signups
-        $user_id = 1;
         $signups = Signup::where('user_id', $user_id)->get();
 
         return view('dashboard.signups')->with('page_title', $page_title)->with('user', $user)->with('signups', $signups);
@@ -83,19 +77,20 @@ class DashboardController extends Controller
 
     public function create_idea() {
         $page_title = "New Idea";
-        $user = array(
-            'name' => 'Sunny Singh',
-            'email' => 'ishy.singh@gmail.com'
-        );
+
+        // Get user
+        $user = $this->get_user();
+        $user_id = $user->id;
+
         return view('dashboard.new-idea')->with('page_title', $page_title)->with('user', $user);
     }
 
     public function edit_idea($idea_id) {
         $page_title = "Edit Idea";
-        $user = array(
-            'name' => 'Sunny Singh',
-            'email' => 'ishy.singh@gmail.com'
-        );
+        
+        // Get user
+        $user = $this->get_user();
+        $user_id = $user->id;
 
         // Get idea
         $idea = Idea::where('id', $idea_id)->first();
@@ -104,5 +99,38 @@ class DashboardController extends Controller
         $landing_pages = LandingPage::where('idea_id', $idea_id)->get();
 
         return view('dashboard.edit-idea')->with('page_title', $page_title)->with('user', $user)->with('idea', $idea)->with('landing_pages', $landing_pages);
+    }
+
+    public function trial_ended() {
+        $page_title = "Trial Ended";
+        
+        // Get user
+        $user = $this->get_user();
+        $user_id = $user->id;
+
+        return view('dashboard.trial-ended')->with('page_title', $page_title)->with('user', $user);
+    }
+
+    /* Private Helper Functions */
+    private function get_user() {
+        // Check if session variable set
+        if (session()->get('logged_in') != true) {
+            return redirect(url('/start-trial'));
+        } else {
+            // Return user
+            return User::where('id', Session::get('user_id'))->first();
+        }
+    }
+
+    private function has_trial_ended() {
+        // First get user
+        $user = $this->get_user();
+        $user_id = $user->id;
+
+        // Get now
+        $now = new \DateTime();
+
+        // Check to see if trial has ended
+        if ($user_id->next_payment_date < )
     }
 }

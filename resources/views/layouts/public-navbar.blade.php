@@ -1,3 +1,5 @@
+<a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle colorlib-nav-white"><i></i></a>
+
 <nav class="colorlib-nav" role="navigation">
 	<div class="top-menu">
 		<div class="container">
@@ -10,7 +12,7 @@
 						<li><a href="/">Home</a></li>
 						<li><a href="/solutions">Solutions</a></li>
 						<li><a href="/blog">Blog</a></li>
-						<li><a href="contact.html">Contact</a></li>
+						<li><a href="/contact">Contact</a></li>
 						<li class="has-dropdown">
 							<a href="">Members</a>
 							<ul class="dropdown">

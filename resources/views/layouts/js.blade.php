@@ -18,9 +18,12 @@
 <script src="{{ URL::asset('vendor/chartjs/Chart.bundle.min.js') }}"></script>
 <script src="{{ URL::asset('vendor/select2/select2.min.js') }}">
 </script>
+<script src="{{ URL::asset('js/stripe-handler.js') }}"></script>
 
 <!-- Main JS-->
 <script src="{{ URL::asset('js/main.js') }}"></script>
 
 <!-- Custom JS -->
 <script src="{{ URL::asset('js/custom.js') }}"></script>
+
+@yield('page_js')

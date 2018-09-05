@@ -51,8 +51,9 @@
 	</head>
 	<body>
 		<div class="colorlib-loader"></div>
-		@include('layouts.public-navbar')
+		
 		<div class="page">
+			@include('layouts.public-navbar')
 			@yield('content')
 		</div>
 
