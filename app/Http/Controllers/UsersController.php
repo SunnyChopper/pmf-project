@@ -15,6 +15,30 @@ class UsersController extends Controller
 		return $this->create_trial_user($data);
 	}
 
+	public function login(Request $data) {
+		// Get relevant data
+		$email = $data->email;
+
+		if ($this->does_user_exist('email', $email) == true) {
+			// Get user info
+			$user = $this->read_user_by_email($email);
+			$hashed_password = $user->password;
+
+			// Compare strings
+			if (strcmp(Hash::make($data->password), $hashed_password) == true) {
+				// Start session
+				Session::put('logged_in', true);
+				Session::put('user_id', $user->id);
+
+				return "Success";
+			} else {
+				return "Incorrect password";
+			}
+		} else {
+			return "User account does not exist.";
+		}
+	}
+
 	/* Private CRUD Functions */
 	private function create_paying_user(Request $data) {
 		// Gather relevant metadata
@@ -89,6 +113,10 @@ class UsersController extends Controller
 		return User::where('id', $user_id)->first();
 	}
 
+	private function read_user_by_email($email) {
+		return User::where('email', $email)->first();
+	}
+
 	private function update_user(Request $data) {
 		// Load up user
 		$user = User::where('id', $data->user_id)->first();
@@ -142,5 +170,13 @@ class UsersController extends Controller
 		$user = User::where('id', $user_id)->first();
 		$user->is_active = 0;
 		return $user->save();
+	}
+
+	private function does_user_exist($lookup_field, $value) {
+		if (User::where($lookup_field, $value)->count() != 0) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 }

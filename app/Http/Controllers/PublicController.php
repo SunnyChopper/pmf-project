@@ -34,4 +34,29 @@ class PublicController extends Controller
     	
     	return view('public.start-trial')->with('page_title', $page_title)->with('page_header', $page_header);
     }
+
+    public function blog() {
+        // Page data
+        $page_header = "Blog";
+        $page_title = config('app.name') . " - " . $page_header;
+
+        return view('public.blog')->with('page_title', $page_title)->with('page_header', $page_header);
+    }
+
+    public function contact() {
+        // Page data
+        $page_header = "Contact";
+        $page_title = config('app.name') . " - " . $page_header;
+
+        return view('public.contact')->with('page_title', $page_title)->with('page_header', $page_header);
+    }
+
+    public function login() {
+        // Page data
+        $page_header = "Login";
+        $page_title = config('app.name') . " - " . $page_header;
+
+        return view('public.login')->with('page_title', $page_title)->with('page_header', $page_header);
+    }
+
 }

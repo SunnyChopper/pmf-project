@@ -14,6 +14,11 @@ class DashboardController extends Controller
     public function index() {
     	$page_title = "Main Dashboard";
 
+        // Check for trial
+        if ($this->has_trial_ended() == "Yes") {
+            return redirect(url('/trial-ended'));
+        }
+
         // Get user
     	$user = $this->get_user();
 
@@ -51,6 +56,11 @@ class DashboardController extends Controller
     public function landing_pages() {
     	$page_title = "Landing Pages";
 
+        // Check for trial
+        if ($this->has_trial_ended() == "Yes") {
+            return redirect(url('/trial-ended'));
+        }
+
         // Get user
         $user = $this->get_user();
         $user_id = $user->id;
@@ -64,7 +74,11 @@ class DashboardController extends Controller
     public function signups() {
         $page_title = "Signups";
 
-        // Get user
+        // Check for trial
+        if ($this->has_trial_ended() == "Yes") {
+            return redirect(url('/trial-ended'));
+        }
+
         // Get user
         $user = $this->get_user();
         $user_id = $user->id;
@@ -128,9 +142,13 @@ class DashboardController extends Controller
         $user_id = $user->id;
 
         // Get now
-        $now = new \DateTime();
+        $today = date("Y-m-d");
 
         // Check to see if trial has ended
-        if ($user_id->next_payment_date < )
+        if ($user->trial == 1) {
+            if ($user->next_payment_date <= $today) {
+                return "Yes";
+            }
+        }
     }
 }

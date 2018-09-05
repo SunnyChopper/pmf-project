@@ -130,6 +130,15 @@
 }
 
 /* ------------------------- *\
+	Input
+\* ------------------------- */
+
+input[type=text], input[type=email], input[type=tel], input[type=date] {
+	padding: 12px;
+	height: 48px;
+}
+
+/* ------------------------- *\
 	Special Divs
 \* ------------------------- */
 
@@ -191,6 +200,39 @@
 	margin-left: auto;
 	margin-right: auto;
 	text-align: center;
+}
+
+.blog-box {
+	background-color: white;
+	transition: 0.5s all;
+	-webkit-transition: 0.5s all;
+
+}
+
+.blog-box:hover {
+	cursor: pointer;
+	background-color: #FAFAFA;
+	-webkit-box-shadow: 0px 4px 63px -15px rgba(0,0,0,0.75);
+	-moz-box-shadow: 0px 4px 63px -15px rgba(0,0,0,0.75);
+	box-shadow: 0px 4px 63px -15px rgba(0,0,0,0.75);
+}
+
+.blog-box > .blog-image > img {
+	width: 100%;
+	height: auto;
+}
+
+.blog-box > .blog-info {
+	padding: 16px;
+}
+
+.blog-box > .blog-info > h3 {
+	margin-top: 4px;
+	margin-bottom: 0px;
+}
+
+.blog-box > .blog-info > p {
+	margin-bottom: 0px;
 }
 
 #banner-home {

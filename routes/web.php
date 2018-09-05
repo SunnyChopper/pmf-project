@@ -14,7 +14,13 @@
 // Public site
 Route::get('/', 'PublicController@index');
 Route::get('/solutions', 'PublicController@solutions');
+Route::get('/blog', 'PublicController@blog');
+Route::get('/contact', 'PublicController@contact');
+Route::get('/login', 'PublicController@login');
 Route::get('/start-trial', 'PublicController@trial');
+
+// User Control
+Route::post('/login/attempt', 'UsersController@login');
 
 // Check out
 Route::post('/register/free-trial', 'UsersController@start_trial');

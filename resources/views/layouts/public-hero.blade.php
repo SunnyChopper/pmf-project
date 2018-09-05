@@ -8,7 +8,7 @@
 					<div class="animate-box">
 						<h2>Test your most ambitious business ideas</h2>
 						<p>and validate with the market even quicker</p>
-						<p><a href="gallery.html" class="btn btn-primary btn-lg btn-custom">Start My Free Trial</a></p>
+						<p><a href="/start-trial" class="btn btn-primary btn-lg btn-custom">Start My Free Trial</a></p>
 					</div>
 				</div>
 			</div>
