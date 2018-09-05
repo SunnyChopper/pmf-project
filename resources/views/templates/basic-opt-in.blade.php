@@ -41,7 +41,9 @@
 				</div>
 			</div>
 
-			<form>
+			<form id="signup_form" method="post">
+				{{ csrf_field() }}
+				<input type="hidden" name="landing_page_id" value="{{ $landing_page_id }}">
 				<div class="row">
 					<div class="col-lg-4 offset-lg-4 col-md-6 offset-md-3 col-sm-12 col-xs-12">
 						<input type="text" name="name" class="form-control" placeholder="Name" required>
@@ -56,10 +58,13 @@
 
 				<div class="row mt-8">
 					<div class="col-lg-2 offset-lg-5 col-md-4 offset-md-4 col-sm-12 col-xs-12">
-						<input value="{{ $xml_data["button_text"] }}" type="submit" class="btn btn-primary create-signup"> 
+						<input value="{{ $xml_data["button_text"] }}" type="submit" class="btn btn-primary center-button create-signup"> 
 					</div>
 				</div>
 			</form>
 		</div>
+
+		<script src="{{ URL::asset('vendor/jquery-3.2.1.min.js?v=1') }}"></script>
+		<script src="{{ URL::asset('js/custom.js') }}"></script>
 	</body>
 </html>

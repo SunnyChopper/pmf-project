@@ -9,6 +9,9 @@ use DOMXpath;
 use URL;
 use File;
 use SimpleXMLElement;
+use Session;
+
+use App\User;
 use App\Idea;
 use App\XMLInfo;
 use App\Template;
@@ -16,31 +19,13 @@ use App\LandingPage;
 
 class LandingPageController extends Controller
 {
-	public function test() {
-		$doc = new DOMDocument;
-		$doc->load(URL::asset('/xml/test.xml'));
-
-		$xpath = new DOMXpath($doc);
-		$nodes = $xpath->query('/landingpage/*');
-
-		$node_array = array();
-		foreach($nodes as $node)
-		{
-			$node_array[$node->nodeName] = $node->nodeValue;
-		}
-
-		return view('templates.sample-template')->with('node_array', $node_array);
-	}
 
 	public function choose_template() {
 		// Page details
 		$page_title = "Choose Landing Page Template";
 
 		// Get user
-    	$user = array(
-    		'name' => 'Sunny Singh',
-    		'email' => 'ishy.singh@gmail.com'
-    	);
+    	$user = $this->get_user();
 
     	// Get templates
     	$templates = Template::paginate(12);
@@ -53,13 +38,10 @@ class LandingPageController extends Controller
 		$page_title = "Customize Your Template";
 
 		// Get user
-    	$user = array(
-    		'name' => 'Sunny Singh',
-    		'email' => 'ishy.singh@gmail.com'
-    	);
+    	$user = $this->get_user();
+    	$user_id = $user->id;
 
     	// Get ideas for user
-    	$user_id = 1;
     	$ideas = Idea::where('user_id', $user_id)->get();
 
     	// Get XML fields for the template
@@ -73,10 +55,7 @@ class LandingPageController extends Controller
 		$page_title = "Customize Your Template";
 
 		// Get user
-    	$user = array(
-    		'name' => 'Sunny Singh',
-    		'email' => 'ishy.singh@gmail.com'
-    	);
+    	$user = $this->get_user();
 
     	// Get template info
     	$template = Template::where('id', $template_id)->first();
@@ -94,8 +73,9 @@ class LandingPageController extends Controller
 	}
 
 	public function publish(Request $data, $template_id) {
-		// Get user info
-		$user_id = 1;
+		// Get user
+    	$user = $this->get_user();
+    	$user_id = $user->id;
 
 		// Get idea info
 		$idea_id = $data->idea_id;
@@ -163,7 +143,7 @@ class LandingPageController extends Controller
 		$xml_data = $this->read_xml('local', $xml_link);
 
 		// Get HTML
-		return view($template_path)->with('xml_data', $xml_data);
+		return view($template_path)->with('xml_data', $xml_data)->with('landing_page_id', $landing_page_id);
 	}
 
 	public function edit($landing_page_id) {
@@ -189,8 +169,9 @@ class LandingPageController extends Controller
 	}
 
 	public function edit_data(Request $data, $landing_page_id) {
-		// Get user info
-		$user_id = 1;
+		// Get user
+    	$user = $this->get_user();
+    	$user_id = $user->id;
 
 		// Get landing page
 		$landing_page = LandingPage::where('id', $landing_page_id)->first();
@@ -240,31 +221,16 @@ class LandingPageController extends Controller
 		return redirect(url('/dashboard/landing-pages/'));
 	}
 
-	public function test_xml() {
-		// $tags = ["title", "description"];
-		// $values = ["Test title", "This is a test description that has been edited."];
-		// $this->edit_xml(1, 1, $tags, $values);
-
-		$xml_tags = $this->get_xml_tags(1);
-		foreach ($xml_tags as $tag => $tag_data) {
-			switch ($tag_data[0]) {
-				case "text":
-					echo "<label>" . $tag_data[1] . "</label>";
-					echo "<br>";
-					echo "<input type='text' name='" . $tag ."'>";
-					echo "<br>";
-					break;
-				case "textarea":
-					echo "<label>" . $tag_data[1] . "</label>";
-					echo "<br>";
-					echo "<textarea name='" . $tag ."'></textarea>";
-					echo "<br>";
-					break;
-				default:
-					break;
-			}
-		} 
-	}
+	/* Private Helper Functions */
+    private function get_user() {
+        // Check if session variable set
+        if (session()->get('logged_in') != true) {
+            return redirect(url('/start-trial'));
+        } else {
+            // Return user
+            return User::where('id', Session::get('user_id'))->first();
+        }
+    }
 
 	private function get_xml_tags($template_id) {
 		// Get XMLInfo object

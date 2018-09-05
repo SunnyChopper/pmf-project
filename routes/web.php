@@ -52,4 +52,4 @@ Route::get('/lp/{user_id}/{landing_page_id}', 'LandingPageController@view');
 Route::get('/dashboard/lp/test', 'LandingPageController@test');
 
 // Signups
-Route::post('/signups/create', 'SignupsController@create');
+Route::post('/signups/create', 'SignupController@create');

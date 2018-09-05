@@ -13,7 +13,8 @@ class IdeasController extends Controller
     	$description = $data->description;
 
     	// Get user id
-    	$user_id = 1;
+        $user = $this->get_user();
+        $user_id = $user->id;
 
     	// Create idea
     	$idea = new Idea();
@@ -35,7 +36,8 @@ class IdeasController extends Controller
     	$description = $data->description;
 
     	// Check if idea belongs to the user
-    	$user_id = 1;
+        $user = $this->get_user();
+        $user_id = $user->id;
     	$idea = Idea::where('id', $idea_id)->first();
 
     	if ($user_id == $idea->user_id) {
@@ -50,5 +52,16 @@ class IdeasController extends Controller
     		// Return back
     		return redirect()->back();
     	}
+    }
+
+    /* Private Helper Functions */
+    private function get_user() {
+        // Check if session variable set
+        if (session()->get('logged_in') != true) {
+            return redirect(url('/start-trial'));
+        } else {
+            // Return user
+            return User::where('id', Session::get('user_id'))->first();
+        }
     }
 }
