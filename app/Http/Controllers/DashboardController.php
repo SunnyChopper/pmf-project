@@ -3,16 +3,21 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use App\Idea;
 use App\LandingPage;
 use App\Signup;
 use App\User;
-use Session;
 
 class DashboardController extends Controller
 {
     public function index() {
     	$page_title = "Main Dashboard";
+
+        // Check if logged out
+        if (Session::get('logged_in') == NULL) {
+            return redirect(url('/login'));
+        }
 
         // Check for trial
         if ($this->has_trial_ended() == "Yes") {
@@ -56,6 +61,11 @@ class DashboardController extends Controller
     public function landing_pages() {
     	$page_title = "Landing Pages";
 
+        // Check if logged out
+        if (Session::get('logged_in') == NULL) {
+            return redirect(url('/login'));
+        }
+
         // Check for trial
         if ($this->has_trial_ended() == "Yes") {
             return redirect(url('/trial-ended'));
@@ -73,6 +83,11 @@ class DashboardController extends Controller
 
     public function signups() {
         $page_title = "Signups";
+
+        // Check if logged out
+        if (Session::get('logged_in') == NULL) {
+            return redirect(url('/login'));
+        }
 
         // Check for trial
         if ($this->has_trial_ended() == "Yes") {
@@ -92,6 +107,11 @@ class DashboardController extends Controller
     public function create_idea() {
         $page_title = "New Idea";
 
+        // Check if logged out
+        if (Session::get('logged_in') == NULL) {
+            return redirect(url('/login'));
+        }
+
         // Get user
         $user = $this->get_user();
         $user_id = $user->id;
@@ -101,6 +121,11 @@ class DashboardController extends Controller
 
     public function edit_idea($idea_id) {
         $page_title = "Edit Idea";
+
+        // Check if logged out
+        if (Session::get('logged_in') == NULL) {
+            return redirect(url('/login'));
+        }
         
         // Get user
         $user = $this->get_user();
@@ -117,6 +142,11 @@ class DashboardController extends Controller
 
     public function trial_ended() {
         $page_title = "Trial Ended";
+
+        // Check if logged out
+        if (Session::get('logged_in') == NULL) {
+            return redirect(url('/login'));
+        }
         
         // Get user
         $user = $this->get_user();
@@ -129,7 +159,7 @@ class DashboardController extends Controller
     private function get_user() {
         // Check if session variable set
         if (session()->get('logged_in') != true) {
-            return redirect(url('/start-trial'));
+            return 0;
         } else {
             // Return user
             return User::where('id', Session::get('user_id'))->first();

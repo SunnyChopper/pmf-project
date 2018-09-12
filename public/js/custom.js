@@ -42,6 +42,74 @@ $(".create-signup").on('click', function() {
 	});
 });
 
+/* -------------------------- *\
+	Checkout functions
+\* -------------------------- */
+
+$("#submit_button").on('click', function() {
+	$("#payment-form").submit();
+});
+
+$("#payment-form").on('submit', function(e) {
+	// Prevent from submitting
+	e.preventDefault();
+
+	// Get relevant data
+	var _token = $("input[name=_token]").val();
+	var first_name = $("input[name=first_name]").val();
+	var last_name = $("input[name=last_name]").val();
+	var email = $("input[name=email]").val();
+	var password = $("input[name=password]").val();
+
+	// Check if trial
+	if ($("input[name=stripeToken]").length > 0) {
+		// Not a trial
+		var stripeToken = $("input[name=stripeToken]").val();
+
+		// Create AJAX request
+		$.ajax({
+			url: $(this).attr('action'),
+			method: $(this).attr('method'),
+			data: {
+				_token: _token,
+				first_name: first_name,
+				last_name: last_name,
+				email: email,
+				password: password,
+				stripeToken: stripeToken
+			},
+			success: function(data) {
+				if (data != "Success") {
+					$("#error").html(data);
+				} else {
+					// Switch to dashboard
+					window.location.replace(window.location.hostname + '/dashboard/');
+				}
+			}
+		});
+	} else {
+		// Create AJAX request
+		$.ajax({
+			url: $(this).attr('action'),
+			method: $(this).attr('method'),
+			data: {
+				_token: _token,
+				first_name: first_name,
+				last_name: last_name,
+				email: email,
+				password: password
+			},
+			success: function(data) {
+				if (data != "Success") {
+					$("#error").html(data);
+				} else {
+					// Switch to dashboard
+					window.location.replace(window.location.hostname + '/dashboard/');
+				}
+			}
+		});
+	}
+});
 
 
 /* -------------------------- *\

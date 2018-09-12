@@ -6,8 +6,6 @@ function stripeResponseHandler(status, response) {
 	} else {
 		var token = response['id'];
 		$('input[name=stripeToken]').val(token);
-		console.log(token);
-		form.get(0).submit();
 	}
 }
 

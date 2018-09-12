@@ -150,11 +150,8 @@ class LandingPageController extends Controller
 		// Page data
 		$page_title = "Edit Landing Page";
 
-		// Get user
-    	$user = array(
-    		'name' => 'Sunny Singh',
-    		'email' => 'ishy.singh@gmail.com'
-    	);
+    	// Get user
+    	$user = $this->get_user();
 
 		// Get landing page
 		$landing_page = LandingPage::where('id', $landing_page_id)->first();
@@ -162,7 +159,7 @@ class LandingPageController extends Controller
 		$xml_tags = $this->get_xml_tags($landing_page->template_id);
 
 		// Get ideas for user
-    	$user_id = 1;
+    	$user_id = $user->id;
     	$ideas = Idea::where('user_id', $user_id)->get();
 
 		return view('dashboard.edit-landing-page')->with('page_title', $page_title)->with('user', $user)->with('landing_page', $landing_page)->with('xml_data', $xml_data)->with('xml_tags', $xml_tags)->with('template_id', $landing_page->template_id)->with('ideas', $ideas);

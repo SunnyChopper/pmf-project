@@ -39,6 +39,11 @@ class UsersController extends Controller
 		}
 	}
 
+	public function logout() {
+		Session::flush();
+		return redirect(url('/'));
+	}
+
 	/* Private CRUD Functions */
 	private function create_paying_user(Request $data) {
 		// Gather relevant metadata

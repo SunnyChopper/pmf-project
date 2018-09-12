@@ -17,12 +17,17 @@ Route::get('/solutions', 'PublicController@solutions');
 Route::get('/blog', 'PublicController@blog');
 Route::get('/contact', 'PublicController@contact');
 Route::get('/login', 'PublicController@login');
+
+// Plans
+Route::get('/plan/{plan_id}', 'PlansController@index');
 Route::get('/start-trial', 'PublicController@trial');
 
 // User Control
 Route::post('/login/attempt', 'UsersController@login');
+Route::get('/logout', 'UsersController@logout');
 
 // Check out
+Route::post('/plan/register/{plan_id}', 'CheckoutController@checkout');
 Route::post('/register/free-trial', 'UsersController@start_trial');
 
 // Testing

@@ -6,9 +6,9 @@
 			<div class="container">
 				<div class="col-md-12 col-md-offset-0">
 					<div class="animate-box">
-						<h2>Test your most ambitious business ideas</h2>
-						<p>and validate with the market even quicker</p>
-						<p><a href="/start-trial" class="btn btn-primary btn-lg btn-custom">Start My Free Trial</a></p>
+						<h2 style="margin-bottom: 0px;">Grow your personal brand</h2>
+						<p style="line-height: 36px;">and capture more attention</p>
+						<p><a href="/plan/1" class="btn btn-primary btn-lg btn-custom">Start My Free Trial</a></p>
 					</div>
 				</div>
 			</div>

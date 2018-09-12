@@ -11,13 +11,13 @@
 					<ul>
 						<li><a href="/">Home</a></li>
 						<li><a href="/solutions">Solutions</a></li>
-						<li><a href="/blog">Blog</a></li>
+						{{-- <li><a href="/blog">Blog</a></li> --}}
 						<li><a href="/contact">Contact</a></li>
 						<li class="has-dropdown">
 							<a href="">Members</a>
 							<ul class="dropdown">
 								<li><a href="/login">Login</a></li>
-								<li><a href="/register">Register</a></li>
+								<li><a href="/plan/1">Register for Beta</a></li>
 							</ul>
 						</li>
 					</ul>

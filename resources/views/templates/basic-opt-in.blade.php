@@ -4,7 +4,7 @@
 	    <meta charset="UTF-8">
 	    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-	    <title>{{ config('app.name') }}</title>
+	    <title>{{ $xml_data["page_title"] }}</title>
 
 	    <!-- Bootstrap CSS-->
     	<link href="{{ URL::asset('vendor/bootstrap-4.1/bootstrap.min.css') }}" rel="stylesheet" media="all">
@@ -53,6 +53,13 @@
 				<div class="row mt-8">
 					<div class="col-lg-4 offset-lg-4 col-md-6 offset-md-3 col-sm-12 col-xs-12">
 						<input type="email" name="email" class="form-control" placeholder="Email" required>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-lg-4 offset-lg-4 col-md-6 offset-md-3 col-sm-12 col-xs-12">
+						<p class="text-center success-message green"></p>
+						<p class="text-center error-message red"></p>
 					</div>
 				</div>
 

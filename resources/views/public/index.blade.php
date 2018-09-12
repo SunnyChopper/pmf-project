@@ -16,7 +16,7 @@
 				<div class="feature-box">
 					<i class="icon-spinner10"></i>
 					<h3>Test Quickly</h3>
-					<p>By being able to quickly create landing pages and opt-ins, you can quickly test which ideas are worth pursuing and which need to be cut</p>
+					<p>By being able to quickly create opt-in pages, you can quickly test which ideas are getting more attention and create more content for that</p>
 				</div>
 			</div>
 
@@ -24,7 +24,7 @@
 				<div class="feature-box">
 					<i class="icon-stats-bars"></i>
 					<h3>Analytics</h3>
-					<p>Get meaningful data and analytics on your landing pages that will help you determine how to properly split test and which ideas are worthwhile</p>
+					<p>Get meaningful data and analytics on your opt-in pages that will help you determine how to properly split test and which ideas are worthwhile</p>
 				</div>
 			</div>
 
