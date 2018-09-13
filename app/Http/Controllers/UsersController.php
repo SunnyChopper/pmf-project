@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use App\User;
+use App\UserAnalytics;
+use App\UserLogin;
 
 class UsersController extends Controller
 {
@@ -29,6 +31,18 @@ class UsersController extends Controller
 				// Start session
 				Session::put('logged_in', true);
 				Session::put('user_id', $user->id);
+
+				// Update user analytics
+				$analytics = UserAnalytics::where('user_id', $user->id)->first();
+				$analytics->number_of_logins = $analytics->number_of_logins + 1;
+				$analytics->save();
+
+				// Insert login time
+				$date = date('Y-m-d H:i:s');
+				$login_time = new UserLogin;
+				$login_time->user_id = $user->id;
+				$login_time->login_time = $date;
+				$login_time->save();
 
 				return "Success";
 			} else {

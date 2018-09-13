@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Signup;
 use App\LandingPage;
+use App\UserAnalytics;
 
 class SignupController extends Controller
 {
@@ -53,6 +54,20 @@ class SignupController extends Controller
 		// Get landing page data and get who it belongs to
 		$landing_page = LandingPage::where('id', $landing_page_id)->first();
 		$user_id = $landing_page->user_id;
+
+		// Update analytics
+		$analytics = UserAnalytics::where('user_id', $user_id)->first();
+		$analytics->number_of_signups = $analytics->number_of_signups + 1;
+		$analytics->save();
+
+		// Update analytics for user
+		$landing_page->signups = $landing_page->signups + 1;
+		$landing_page->save();
+
+		// Update plan analytics
+		$plan = Plan::where('id', $landing_page->idea_id)->first();
+		$plan->signups = $plan->signups + 1;
+		$plan->save();
 
 		// Create Signup object and save
 		$signup = new Signup;

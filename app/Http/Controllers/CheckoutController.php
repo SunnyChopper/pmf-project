@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Session;
 
 use App\Plan;
 use App\User;
+use App\UserAnalytics;
 
 
 class CheckoutController extends Controller
@@ -43,6 +44,18 @@ class CheckoutController extends Controller
 				$user->card_error = $card_error;
 				$user->is_active = 1;
 				$user->save();
+
+				// Create user analytics object
+				$analytics = new UserAnalytics;
+				$analytics->user_id = $user->id;
+				$analytics->number_of_logins = 0;
+				$analytics->number_of_impressions = 0;
+				$analytics->number_of_signups = 0;
+				$analytics->number_of_ideas = 0;
+				$analytics->number_of_idea_edits = 0;
+				$analytics->number_of_landing_pages = 0;
+				$analytics->number_of_landing_page_edits = 0;
+				$analytics->save();
 
 				// Update the plan
 				$plan->signups = $plan->signups + 1;
@@ -98,6 +111,18 @@ class CheckoutController extends Controller
 					$user->card_error = $card_error;
 					$user->is_active = 1;
 					$user->save();
+
+					// Create user analytics object
+					$analytics = new UserAnalytics;
+					$analytics->user_id = $user->id;
+					$analytics->number_of_logins = 0;
+					$analytics->number_of_impressions = 0;
+					$analytics->number_of_signups = 0;
+					$analytics->number_of_ideas = 0;
+					$analytics->number_of_idea_edits = 0;
+					$analytics->number_of_landing_pages = 0;
+					$analytics->number_of_landing_page_edits = 0;
+					$analytics->save();
 
 					// Update the plan
 					$plan->signups = $plan->signups + 1;

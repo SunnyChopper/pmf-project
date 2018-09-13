@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Idea;
+use App\UserAnalytics;
 
 class IdeasController extends Controller
 {
@@ -15,6 +16,11 @@ class IdeasController extends Controller
     	// Get user id
         $user = $this->get_user();
         $user_id = $user->id;
+
+        // Update user analytics
+        $analytics = UserAnalytics::where('user_id', $user_id)->first();
+        $analytics->number_of_ideas = $analytics->number_of_ideas + 1;
+        $analytics->save();
 
     	// Create idea
     	$idea = new Idea();
@@ -39,6 +45,11 @@ class IdeasController extends Controller
         $user = $this->get_user();
         $user_id = $user->id;
     	$idea = Idea::where('id', $idea_id)->first();
+
+        // Update user analytics
+        $analytics = UserAnalytics::where('user_id', $user_id)->first();
+        $analytics->number_of_idea_edits = $analytics->number_of_idea_edits + 1;
+        $analytics->save();
 
     	if ($user_id == $idea->user_id) {
     		// Yea, there is a match, time to edit

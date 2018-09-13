@@ -38,7 +38,7 @@
 										<td>{{ $landing_page->signups }}</td>
 										<td>
 											<a href="/dashboard/lp/edit/{{ $landing_page->id }}" class="btn btn-warning">Edit</a>
-											<a href="/lp/1/{{ $landing_page->id }}" class="btn btn-primary">View</a>
+											<a href="/lp/{{ Session::get('user_id') }}/{{ $landing_page->id }}" class="btn btn-primary">View</a>
 										</td>
 									</tr>
 								@endforeach

@@ -16,6 +16,7 @@ use App\Idea;
 use App\XMLInfo;
 use App\Template;
 use App\LandingPage;
+use App\UserAnalytics;
 
 class LandingPageController extends Controller
 {
@@ -103,6 +104,11 @@ class LandingPageController extends Controller
 		$landing_page->save();
 		$landing_page_id = $landing_page->id;
 
+		// Update user analytics
+		$analytics = UserAnalytics::where('user_id', $user_id)->first();
+		$analytics->number_of_landing_pages = $analytics->number_of_landing_pages + 1;
+		$analytics->save();
+
 		// Get XML link
 		$xml_link = $this->get_xml_path($user_id, $landing_page_id);
 		$landing_page->xml_link = $xml_link;
@@ -138,6 +144,23 @@ class LandingPageController extends Controller
 		$landing_page = LandingPage::where('id', $landing_page_id)->first();
 		$template_path = $landing_page->landing_page_template_path;
 		$xml_link = $landing_page->xml_link;
+
+		// Update landing page analytics if not user
+		if (Session::get('user_id') != $user_id) {
+			$landing_page->impressions = $landing_page->impressions + 1;
+			$landing_page->save();
+
+			// Get user ID for analytics purpose
+			$user_id = $landing_page->user_id;
+			$analytics = UserAnalytics::where('user_id', $user_id)->first();
+			$analytics->number_of_impressions = $analytics->number_of_impressions + 1;
+			$analytics->save();
+
+			// Update idea analytics
+			$plan = Idea::where('id', $landing_page->idea_id)->first();
+			$plan->impressions = $plan->impressions + 1;
+			$plan->save();
+		}
 
 		// Get XML tags
 		$xml_data = $this->read_xml('local', $xml_link);
@@ -213,6 +236,11 @@ class LandingPageController extends Controller
 
 		// Edit XML
 		$this->edit_xml($user_id, $landing_page_id, $tags, $values);
+
+		// Update analytics
+		$analytics = UserAnalytics::where('user_id', $user_id)->first();
+		$analytics->number_of_landing_page_edits = $analytics->number_of_landing_page_edits + 1;
+		$analytics->save();
 
 		// Redirect to landing pages
 		return redirect(url('/dashboard/landing-pages/'));
