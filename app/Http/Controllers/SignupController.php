@@ -44,7 +44,7 @@ class SignupController extends Controller
 		$marketing_consent = $data->marketing_consent;
 
 		// Check to see if email already submitted
-		if (Signup::where('landing_page_id', $landing_page_id)::where('email', $email)->count() > 0) {
+		if (Signup::where('landing_page_id', $landing_page_id)->where('email', $email)->count() > 0) {
 			return "You have already signed up for this offer!";
 		}
 
