@@ -36,7 +36,7 @@ $(".create-signup").on('click', function() {
 			if (data == "Successful") {
 				$(".success-message").html('Successfully submitted.');
 			} else {
-				$(".failure-message").html('Uh oh, there was an error somewhere! We\'re working on it, try again soon...');
+				$(".failure-message").html(data);
 			}
 		}
 	});

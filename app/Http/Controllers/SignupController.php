@@ -12,11 +12,7 @@ class SignupController extends Controller
 {
 	/* CRUD Public Functions */
 	public function create(Request $data) {
-		if ($this->create_signup($data) == true) {
-			return "Successful";
-		} else {
-			return "Failed";
-		}
+		return $this->create_signup($data);
 	}
 
 	public function read($signup_id) {
@@ -46,6 +42,11 @@ class SignupController extends Controller
 		$name = $data->name;
 		$email = $data->email;
 		$marketing_consent = $data->marketing_consent;
+
+		// Check to see if email already submitted
+		if (Signup::where('landing_page_id', $landing_page_id)::where('email', $email)->count() > 0) {
+			return "You have already signed up for this offer!";
+		}
 
 		// Split name into first and last
 		$name_array = $this->split_name($name);
@@ -78,7 +79,9 @@ class SignupController extends Controller
 		$signup->email = $email;
 		$signup->marketing_consent = $marketing_consent;
 		$signup->user_id = $user_id;
-		return $signup->save();
+		$signup->save();
+
+		return "Successful";
 	}
 
 	private function read_signup($signup_id) {
