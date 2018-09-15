@@ -38,6 +38,7 @@
 
 				<form id="signup_form" method="post">
 					{{ csrf_field() }}
+					<input type="hidden" name="landing_page_id" value="{{ $landing_page_id }}">
 					<div class="row">
 						<div class="col-lg-4 offset-lg-4 col-md-6 offset-md-3 col-sm-12 col-xs-12">
 							<input type="text" name="name" class="form-control" placeholder="Name" required>
