@@ -51,6 +51,13 @@
 						</div>
 					</div>
 
+					<div class="row">
+						<div class="col-lg-4 offset-lg-4 col-md-6 offset-md-3 col-sm-12 col-xs-12">
+							<p class="text-center success-message green"></p>
+							<p class="text-center error-message red"></p>
+						</div>
+					</div>
+
 					<div class="row mt-8">
 						<div class="col-lg-2 offset-lg-5 col-md-4 offset-md-4 col-sm-12 col-xs-12">
 							<input id="submit-button" value="{{ $xml_data['button_text'] }}" type="submit" class="btn btn-primary center-button create-signup"> 
