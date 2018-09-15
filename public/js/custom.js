@@ -33,6 +33,11 @@ $(".create-signup").on('click', function() {
 			marketing_consent: marketing_consent
 		},
 		success: function(data) {
+			// Empty out the fields
+			$("input[name=name]").val('');
+			$("input[name=email]").val('');
+
+			// Display feedback
 			if (data == "Successful") {
 				$(".success-message").html('Successfully submitted.');
 			} else {
