@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Signup;
 use App\LandingPage;
 use App\UserAnalytics;
+use App\Plan;
 
 class SignupController extends Controller
 {
