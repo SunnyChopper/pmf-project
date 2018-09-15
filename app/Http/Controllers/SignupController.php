@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Signup;
 use App\LandingPage;
 use App\UserAnalytics;
-use App\Plan;
+use App\Idea;
 
 class SignupController extends Controller
 {
@@ -66,9 +66,9 @@ class SignupController extends Controller
 		$landing_page->save();
 
 		// Update plan analytics
-		$plan = Plan::where('id', $landing_page->idea_id)->first();
-		$plan->signups = $plan->signups + 1;
-		$plan->save();
+		$idea = Idea::where('id', $landing_page->idea_id)->first();
+		$idea->signups = $idea->signups + 1;
+		$idea->save();
 
 		// Create Signup object and save
 		$signup = new Signup;
