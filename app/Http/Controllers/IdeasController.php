@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Idea;
 use App\UserAnalytics;
+use App\User;
 
 class IdeasController extends Controller
 {
