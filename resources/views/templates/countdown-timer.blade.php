@@ -51,7 +51,7 @@
 
 					<div class="row mt-8">
 						<div class="col-lg-2 offset-lg-5 col-md-4 offset-md-4 col-sm-12 col-xs-12">
-							<input id="submit-button" value="{{ $xml_data['button_text'] }}" type="submit" class="btn btn-primary center-button"> 
+							<input id="submit-button" value="{{ $xml_data['button_text'] }}" type="submit" class="btn btn-primary center-button create-signup"> 
 						</div>
 					</div>
 				</form>

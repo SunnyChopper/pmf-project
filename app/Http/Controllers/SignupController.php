@@ -65,7 +65,7 @@ class SignupController extends Controller
 		$landing_page->signups = $landing_page->signups + 1;
 		$landing_page->save();
 
-		// Update plan analytics
+		// Update idea analytics
 		$idea = Idea::where('id', $landing_page->idea_id)->first();
 		$idea->signups = $idea->signups + 1;
 		$idea->save();
