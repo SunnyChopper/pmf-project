@@ -77,7 +77,7 @@
 		$("body").append($temp);
 		$temp.val(url).select();
 		document.execCommand("copy");
-		$temp.remove();
+		$temp.remove();	
 	}
 </script>
 @endsection
