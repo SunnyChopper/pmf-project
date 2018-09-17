@@ -20,26 +20,27 @@
 						<table class="table table-borderless table-striped table-earning">
 							<thead>
 								<tr>
+									<th>Actions</th>
 									<th>Created On</th>
 									<th>Name</th>
 									<th>Idea</th>
 									<th>Impressions</th>
 									<th>Signups</th>
-									<th></th>
 								</tr>
 							</thead>
 							<tbody>
 								@foreach($landing_pages as $landing_page)
 									<tr>
+										<td>
+											<a href="/dashboard/lp/edit/{{ $landing_page->id }}" class="btn btn-sm btn-warning">Edit</a>
+											<a href="/lp/{{ Session::get('user_id') }}/{{ $landing_page->id }}" class="btn btn-sm btn-primary">View</a>
+											<button class="btn btn-sm btn-success" id="{{ Session::get('user_id') }}/{{ $landing_page->id }}" onclick="copyURL(this.id);">Copy URL</button>
+										</td>
 										<td>{{ $landing_page->created_at->format('F d, Y') }}</td>
 										<td>{{ $landing_page->name }}</td>
 										<td>{{ $landing_page->idea_name }}</td>
 										<td>{{ $landing_page->impressions }}</td>
 										<td>{{ $landing_page->signups }}</td>
-										<td>
-											<a href="/dashboard/lp/edit/{{ $landing_page->id }}" class="btn btn-warning">Edit</a>
-											<a href="/lp/{{ Session::get('user_id') }}/{{ $landing_page->id }}" class="btn btn-primary">View</a>
-										</td>
 									</tr>
 								@endforeach
 							</tbody>
@@ -62,4 +63,21 @@
 	        </div>
 		@endif
 	</div>
+@endsection
+
+@section('page_js')
+<script type="text/javascript">
+	function copyURL(url_extension) {
+		// Create the url
+		var host = document.location.host;
+		var url = host + "/lp/" + url_extension;
+
+		// Create dummy input object to copy from
+		var $temp = $("<input>");
+		$("body").append($temp);
+		$temp.val(url).select();
+		document.execCommand("copy");
+		$temp.remove();
+	}
+</script>
 @endsection
