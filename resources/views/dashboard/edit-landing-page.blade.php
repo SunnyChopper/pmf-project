@@ -60,7 +60,7 @@
 										echo "<div class='col-lg-6 col-md-8 col-sm-12 col-xs-12'>";
 											echo "<div class='form-group'>";
 												echo "<label>" . $tag_data[1] . ":</label>";
-												echo "<input type='date' class='form-control' name'" . $tag . "' value='" . $xml_data[$tag] . "' required>";
+												echo "<input type='date' class='form-control' name='" . $tag . "' value='" . $xml_data[$tag] . "' required>";
 											echo "</div>";
 										echo "</div>";
 										break;
