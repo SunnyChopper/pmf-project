@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+
+use App\Custom\Analytics;
+
 use App\Idea;
 use App\LandingPage;
 use App\Signup;
@@ -26,9 +29,16 @@ class DashboardController extends Controller
 
         // Get user
     	$user = $this->get_user();
+        $user_id = $user->id;
+
+        // Check if user needs onboarding
+        $analytics = new Analytics($user_id);
+        if ($analytics->doesUserNeedOnboarding() == true) {
+            // TODO: Create an onboarding process
+            return redirect(url('/onboarding/start'));
+        }
 
         // Get ideas
-        $user_id = $user->id;
         $ideas = Idea::where('user_id', $user_id)->get();
 
         // Calculate stats

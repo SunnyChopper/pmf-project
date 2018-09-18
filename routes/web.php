@@ -10,6 +10,9 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+// Testing
+Route::post('/test', 'CheckoutController@test');
+Route::get('/checkout', 'PublicController@checkout');
 
 // Public site
 Route::get('/', 'PublicController@index');
@@ -22,17 +25,19 @@ Route::get('/login', 'PublicController@login');
 Route::get('/plan/{plan_id}', 'PlansController@index');
 Route::get('/start-trial', 'PublicController@trial');
 
-// User Control
-Route::post('/login/attempt', 'UsersController@login');
-Route::get('/logout', 'UsersController@logout');
-
 // Check out
 Route::post('/plan/register/{plan_id}', 'CheckoutController@checkout');
 Route::post('/register/free-trial', 'UsersController@start_trial');
 
-// Testing
-Route::post('/test', 'CheckoutController@test');
-Route::get('/checkout', 'PublicController@checkout');
+// Onboarding
+Route::get('/onboarding/start', 'OnboardingController@index');
+Route::post('/onboarding/create-idea', 'OnboardingController@createIdea');
+Route::get('/onboarding/choose-template', 'OnboardingController@choose_template');
+Route::get('/onboarding/edit-template/{template_id}', 'OnboardingController@edit_template');
+Route::post('/onboarding/render-optin-page', 'OnboardingController@renderOptinPage');
+Route::post('/onboarding/create-optin-page', 'OnboardingController@createOptinPage');
+Route::get('/onboarding/share', 'OnboardingController@share');
+
 
 // Dashboard
 Route::get('/dashboard/', 'DashboardController@index');
@@ -58,3 +63,7 @@ Route::get('/dashboard/lp/test', 'LandingPageController@test');
 
 // Signups
 Route::post('/signups/create', 'SignupController@create');
+
+// User Control
+Route::post('/login/attempt', 'UsersController@login');
+Route::get('/logout', 'UsersController@logout');

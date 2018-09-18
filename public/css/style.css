@@ -251,6 +251,25 @@ input[type=text], input[type=email], input[type=tel], input[type=date] {
 }
 
 /* ------------------------- *\
+	Structure
+\* ------------------------- */
+
+.text-center {
+	text-align: center;
+}
+
+.parent {
+	position: relative;
+}
+
+.child {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+/* ------------------------- *\
 	Videos
 \* ------------------------- */
 
