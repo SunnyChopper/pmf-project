@@ -200,7 +200,7 @@ $("#payment-form").on('submit', function(e) {
 					$("#error").html(data);
 				} else {
 					// Switch to dashboard
-					window.location.replace('/dashboard');
+					window.location.replace('/login');
 				}
 			}
 		});
@@ -221,7 +221,7 @@ $("#payment-form").on('submit', function(e) {
 					$("#error").html(data);
 				} else {
 					// Switch to dashboard
-					window.location.replace('/dashboard');
+					window.location.replace('/login');
 				}
 			}
 		});
