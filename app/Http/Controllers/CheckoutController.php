@@ -55,6 +55,7 @@ class CheckoutController extends Controller
 				$analytics->number_of_idea_edits = 0;
 				$analytics->number_of_landing_pages = 0;
 				$analytics->number_of_landing_page_edits = 0;
+				$analytics->onboard = 0;
 				$analytics->save();
 
 				// Update the plan
@@ -122,6 +123,7 @@ class CheckoutController extends Controller
 					$analytics->number_of_idea_edits = 0;
 					$analytics->number_of_landing_pages = 0;
 					$analytics->number_of_landing_page_edits = 0;
+					$analytics->onboard = 0;
 					$analytics->save();
 
 					// Update the plan
