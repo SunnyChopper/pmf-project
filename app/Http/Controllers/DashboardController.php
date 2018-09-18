@@ -168,7 +168,7 @@ class DashboardController extends Controller
     /* Private Helper Functions */
     private function get_user() {
         // Check if session variable set
-        if (session()->get('logged_in') != true) {
+        if (Session::get('logged_in') != true) {
             return 0;
         } else {
             // Return user
