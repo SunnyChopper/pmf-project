@@ -23,8 +23,9 @@
 	<!-- Facebook and Twitter integration -->
 	<meta property="og:title" content="Grow Your Personal Brand"/>
 	<meta property="og:image" content="{{ URL::asset('images/icon/og-image.jpg') }}"/>
-	<meta property="og:url" content="OptinDev.com"/>
-	<meta property="og:site_name" content="optindev.com"/>
+	<meta property="og:url" content="http://www.optindev.com"/>
+	<meta property="og:site_name" content="OptinDev"/>
+	<meta property="og:type" content="website" /> 
 	<meta property="og:description" content="Helping personal brands grow their audience with the power of psychology and artificial intelligence."/>
 	<meta name="twitter:title" content="Grow Your Personal Brand" />
 	<meta name="twitter:image" content="{{ URL::asset('images/icon/og-image.jpg') }}" />
