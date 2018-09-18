@@ -20,6 +20,17 @@
 	})(window,document,'script','dataLayer','GTM-P9B5TN3');</script>
 	<!-- End Google Tag Manager -->
 
+	<!-- Facebook and Twitter integration -->
+	<meta property="og:title" content="Grow Your Personal Brand"/>
+	<meta property="og:image" content="{{ URL::asset('images/icon/og-image.jpg') }}"/>
+	<meta property="og:url" content="OptinDev.com"/>
+	<meta property="og:site_name" content="optindev.com"/>
+	<meta property="og:description" content="Helping personal brands grow their audience with the power of psychology and artificial intelligence."/>
+	<meta name="twitter:title" content="Grow Your Personal Brand" />
+	<meta name="twitter:image" content="{{ URL::asset('images/icon/og-image.jpg') }}" />
+	<meta name="twitter:url" content="OptinDev.com" />
+	<meta name="twitter:card" content="Helping personal brands grow their audience with the power of psychology and artificial intelligence." />
+
 	<!-- Fontfaces CSS-->
 	<link href="{{ URL::asset('css/font-face.css?v=1') }}" rel="stylesheet" media="all">
 	<link href="{{ URL::asset('vendor/font-awesome-4.7/css/font-awesome.min.css?v=1') }}" rel="stylesheet" media="all">

@@ -19,14 +19,14 @@
 
 		<!-- Facebook and Twitter integration -->
 		<meta property="og:title" content="Grow Your Personal Brand"/>
-		<meta property="og:image" content=""/>
-		<meta property="og:url" content=""/>
+		<meta property="og:image" content="{{ URL::asset('images/icon/og-image.jpg') }}"/>
+		<meta property="og:url" content="OptinDev.com"/>
 		<meta property="og:site_name" content="optindev.com"/>
-		<meta property="og:description" content="Helping personal brands grow their audience with the power of software and artificial intelligence."/>
+		<meta property="og:description" content="Helping personal brands grow their audience with the power of psychology and artificial intelligence."/>
 		<meta name="twitter:title" content="Grow Your Personal Brand" />
-		<meta name="twitter:image" content="" />
-		<meta name="twitter:url" content="" />
-		<meta name="twitter:card" content="" />
+		<meta name="twitter:image" content="{{ URL::asset('images/icon/og-image.jpg') }}" />
+		<meta name="twitter:url" content="OptinDev.com" />
+		<meta name="twitter:card" content="Helping personal brands grow their audience with the power of psychology and artificial intelligence." />
 
 		<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css?family=Nunito:200,300,400" rel="stylesheet">
