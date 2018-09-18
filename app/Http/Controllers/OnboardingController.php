@@ -52,6 +52,11 @@ class OnboardingController extends Controller
     	$idea->signups = 0;
     	$idea->save();
 
+    	// Update the analytics
+    	$user_analytics = UserAnalytics::where('user_id', $user_id)->first();
+    	$user_analytics->number_of_ideas = $user_analytics->number_of_ideas + 1;
+    	$user_analytics->save();
+
     	// Go to next page
     	return redirect(url('/onboarding/choose-template'));
     }
