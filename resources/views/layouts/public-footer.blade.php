@@ -17,46 +17,46 @@
 					<ul class="colorlib-footer-links">
 						<li><a href="/"><i class="icon-check"></i> Home</a></li>
 						<li><a href="/solutions"><i class="icon-check"></i> Solutions</a></li>
-						<li><a href="/blog"><i class="icon-check"></i> Blog</a></li>
+						{{-- <li><a href="/blog"><i class="icon-check"></i> Blog</a></li> --}}
 						<li><a href="/contact"><i class="icon-check"></i> Contact</a></li>
 						<li><a href="/privacy"><i class="icon-check"></i> Privacy</a></li>
 					</ul>
 				</p>
 			</div>
 
-			<div class="col-md-3 colorlib-widget">
-				<h4>Recent Blog</h4>
-				<div class="f-blog">
-					<a href="blog.html" class="blog-img" style="background-image: url({{ URL::asset('/public_site/images/blog-1.jpg') }});">
-					</a>
-					<div class="desc">
-						<h2><a href="blog.html">Photoshoot Technique</a></h2>
-						<p class="admin"><span>30 March 2018</span></p>
+				{{-- <div class="col-md-3 colorlib-widget">
+					<h4>Recent Blog</h4>
+					<div class="f-blog">
+						<a href="blog.html" class="blog-img" style="background-image: url({{ URL::asset('/public_site/images/blog-1.jpg') }});">
+						</a>
+						<div class="desc">
+							<h2><a href="blog.html">Photoshoot Technique</a></h2>
+							<p class="admin"><span>30 March 2018</span></p>
+						</div>
 					</div>
-				</div>
-				<div class="f-blog">
-					<a href="blog.html" class="blog-img" style="background-image: url({{ URL::asset('/public_site/images/blog-2.jpg') }});">
-					</a>
-					<div class="desc">
-						<h2><a href="blog.html">Camera Lens Shoot</a></h2>
-						<p class="admin"><span>30 March 2018</span></p>
+					<div class="f-blog">
+						<a href="blog.html" class="blog-img" style="background-image: url({{ URL::asset('/public_site/images/blog-2.jpg') }});">
+						</a>
+						<div class="desc">
+							<h2><a href="blog.html">Camera Lens Shoot</a></h2>
+							<p class="admin"><span>30 March 2018</span></p>
+						</div>
 					</div>
-				</div>
-				<div class="f-blog">
-					<a href="blog.html" class="blog-img" style="background-image: url({{ URL::asset('/public_site/images/blog-3.jpg') }});">
-					</a>
-					<div class="desc">
-						<h2><a href="blog.html">Image the biggest photography studio</a></h2>
-						<p class="admin"><span>30 March 2018</span></p>
+					<div class="f-blog">
+						<a href="blog.html" class="blog-img" style="background-image: url({{ URL::asset('/public_site/images/blog-3.jpg') }});">
+						</a>
+						<div class="desc">
+							<h2><a href="blog.html">Image the biggest photography studio</a></h2>
+							<p class="admin"><span>30 March 2018</span></p>
+						</div>
 					</div>
-				</div>
-			</div>
+				</div> --}}
 
 			<div class="col-md-3 colorlib-widget">
 				<h4>Contact</h4>
 				<ul class="colorlib-footer-links">
-					<li><a href="tel://1234567920"><i class="icon-phone"></i> + 1235 2355 98</a></li>
-					<li><a href="mailto:info@yoursite.com"><i class="icon-envelope"></i> info@yoursite.com</a></li>
+					{{-- <li><a href="tel://1234567920"><i class="icon-phone"></i> + 1235 2355 98</a></li> --}}
+					<li><a href="mailto:info@optindev.com"><i class="icon-envelope"></i> info@optindev.com</a></li>
 				</ul>
 			</div>
 		</div>
