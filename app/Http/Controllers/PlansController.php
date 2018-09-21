@@ -9,14 +9,14 @@ class PlansController extends Controller
 {
 	/* Public CRUD Functions */
     public function index($plan_id) {
-    	// Page data
-    	$page_header = "Checkout";
-    	$page_title = config('app.name') . " - " . $page_header;
-
     	// Get plan
     	$plan = $this->read($plan_id);
         $plan->impressions = $plan->impressions + 1;
         $plan->save();
+
+        // Page data
+        $page_header = $plan->title;
+        $page_title = config('app.name') . " - " . $page_header;
 
     	return view('public.checkout')->with('plan', $plan)->with('page_title', $page_title)->with('page_header', $page_header);
     }

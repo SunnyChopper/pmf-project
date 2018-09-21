@@ -8,7 +8,7 @@
 					<div class="animate-box">
 						<h2 style="margin-bottom: 0px;">Grow your personal brand</h2>
 						<p style="line-height: 36px;">and capture more attention</p>
-						<p><a href="/plan/1" class="btn btn-primary btn-lg btn-custom">Start My Free Trial</a></p>
+						<p><a href="/plan/1" class="btn btn-primary btn-lg btn-custom">Start Beta Testing</a></p>
 					</div>
 				</div>
 			</div>
