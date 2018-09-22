@@ -62,7 +62,19 @@ class PublicController extends Controller
     }
 
     public function test() {
-        
+        $data = array(
+            "first_name" => "Sunny",
+            "last_name" => "Singh",
+            "header_text" => "Welcome",
+            "body" => "<p>Welcome to Optin Dev. Let's start growing our brands!</p>",
+            "email" => "ishy.singh@gmail.com"
+        );
+
+        Mail::send('emails.notification', $data, function($message) use ($data) {
+            $message->to($data["email"], $data["first_name"] . " " . $data["last_name"])
+                    ->subject('Welcome to OptinDev');
+            $message->from('optindev@gmail.com','OptinDev');
+        });
     }
 
 }
