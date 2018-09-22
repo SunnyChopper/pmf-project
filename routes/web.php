@@ -11,7 +11,7 @@
 |
 */
 // Testing
-Route::post('/test', 'CheckoutController@test');
+Route::get('/test', 'PublicController@test');
 Route::get('/checkout', 'PublicController@checkout');
 
 // Public site

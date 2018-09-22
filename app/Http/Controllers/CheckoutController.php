@@ -10,6 +10,8 @@ use App\Plan;
 use App\User;
 use App\UserAnalytics;
 
+use Mail;
+
 
 class CheckoutController extends Controller
 {
@@ -61,6 +63,9 @@ class CheckoutController extends Controller
 				// Update the plan
 				$plan->signups = $plan->signups + 1;
 				$plan->save();
+
+				// Send out the welcome email
+				$this->welcome_email($data->first_name, $data->last_name, $data->email);
 
 				// Set session variables
 				Session::put('logged_in', true);
@@ -130,6 +135,9 @@ class CheckoutController extends Controller
 					$plan->signups = $plan->signups + 1;
 					$plan->save();
 
+					// Send out the welcome email
+					$this->welcome_email($data->first_name, $data->last_name, $data->email);
+
 					// Set session variables
 					Session::put('logged_in', true);
 					Session::put('user_id', $user->id);
@@ -142,6 +150,27 @@ class CheckoutController extends Controller
 				return "Duplicate email";
 			}
 		}	
+	}
+
+	public function welcome_email($first_name, $last_name, $email) {
+		$body = "<p>Welcome to the OptinDev beta. Glad to have you here!</p>";
+		$body .= "<p>The first thing you should do if you haven't already is to go through the on-boarding process and get started off by creating a Value Idea and an opt-in page to go along with it.</p>";
+		$body .= "<p>If you're not sure what a Value Idea is, don't worry, basically all that it means is an idea to give value. So for example, if you were knowledgeable about cars, you can give value in the form of teaching how to repair your car. That would be a Value Idea.</p>";
+		$body .= "<p>If you have any questions, reply back to this email or use our contact form!</p>";
+
+		$data = array(
+            "first_name" => $first_name,
+            "last_name" => $last_name,
+            "header_text" => "Welcome",
+            "body" => $body,
+            "email" => $email
+        );
+
+        Mail::send('emails.notification', $data, function($message) use ($data) {
+            $message->to($data["email"], $data["first_name"] . " " . $data["last_name"])
+                    ->subject('👋🏽 Welcome to OptinDev 👋🏽');
+            $message->from('optindev@gmail.com','OptinDev');
+        });
 	}
 
 

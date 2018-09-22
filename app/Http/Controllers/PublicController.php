@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Mail;
+
 class PublicController extends Controller
 {
     public function index() {
@@ -57,6 +59,10 @@ class PublicController extends Controller
         $page_title = config('app.name') . " - " . $page_header;
 
         return view('public.login')->with('page_title', $page_title)->with('page_header', $page_header);
+    }
+
+    public function test() {
+        
     }
 
 }
