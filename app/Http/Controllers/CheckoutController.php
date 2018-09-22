@@ -188,7 +188,7 @@ class CheckoutController extends Controller
         	"email" => "ishy.singh@gmail.com"
         );
 
-        Mail::send('emails.notification', $notif_body, function($message) use ($notif_data) {
+        Mail::send('emails.notification', $notif_data, function($message) use ($notif_data) {
         	$message->to($notif_data["email"], "Sunny Singh")
                     ->subject('⚡️ OptinDev - New Signup ⚡️');
             $message->from('optindev@gmail.com','OptinDev');
