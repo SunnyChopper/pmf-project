@@ -171,6 +171,28 @@ class CheckoutController extends Controller
                     ->subject('👋🏽 Welcome to OptinDev 👋🏽');
             $message->from('optindev@gmail.com','OptinDev');
         });
+
+        $notif_body = "<p>Congratulations, you have a new beta tester!</p>";
+        $notif_body .= "<p>Here are their details.</p><ul>";
+        $notif_body .= "<li>First name: " . $first_name . "</li>";
+        $notif_body .= "<li>Last name: " . $last_name . "</li>";
+        $notif_body .= "<li>Email: " . $email . "</li>";
+        $notif_body .= "</ul>";
+        $notif_body .= "<p>You may check their status <a href='http://www.optindev.com/phpmyadmin/'>here.</a></p>";
+
+        $notif_data = array(
+        	"first_name" => $first_name,
+        	"last_name" => $last_name,
+        	"header_text" => "New Signup",
+        	"body" => $notif_body,
+        	"email" => "ishy.singh@gmail.com"
+        );
+
+        Mail::send('emails.notification', $notif_body, function($message) use ($notif_data) {
+        	$message->to($notif_data["email"], "Sunny Singh")
+                    ->subject('⚡️ OptinDev - New Signup ⚡️');
+            $message->from('optindev@gmail.com','OptinDev');
+        });
 	}
 
 
