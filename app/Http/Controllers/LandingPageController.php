@@ -18,6 +18,8 @@ use App\Template;
 use App\LandingPage;
 use App\UserAnalytics;
 
+use App\Custom\Logging;
+
 class LandingPageController extends Controller
 {
 
@@ -135,6 +137,13 @@ class LandingPageController extends Controller
 		$idea->landing_pages = $idea->landing_pages + 1;
 		$idea->save();
 
+		// Log the event
+		$create_landing_page_event = "User " . $user_id . " published a new landing page with the ID of " . $landing_page_id;
+		$analytics_event = "User " . $user_id . " now has " . $analytics->number_of_landing_pages . " landing pages.";
+		$logging = new Logging($user_id);
+		$logging->insert($create_landing_page_event);
+		$logging->insert($analytics_event);
+
 		// Redirect back to landing pages
 		return redirect(url('/dashboard/landing-pages/'));
 	}
@@ -147,6 +156,10 @@ class LandingPageController extends Controller
 
 		// Update landing page analytics if not user
 		if (Session::get('user_id') != $user_id) {
+			// Get the IP address of the user
+			$ip = $_SERVER['REMOTE_ADDR'];
+
+			// Increase impressions
 			$landing_page->impressions = $landing_page->impressions + 1;
 			$landing_page->save();
 
@@ -160,6 +173,13 @@ class LandingPageController extends Controller
 			$plan = Idea::where('id', $landing_page->idea_id)->first();
 			$plan->impressions = $plan->impressions + 1;
 			$plan->save();
+
+			// Log the event
+			$landing_page_view_event = "Someone with the IP of " . $ip . " has viewed the landing page with ID of " . $landing_page_id .  " that belongs to User " . $user_id; 
+			$analytics_event = "User " . $user_id . " now has " . $analytics->number_of_impressions . " for this landing page.";
+			$logging = new Logging($user_id);
+			$logging->insert($landing_page_view_event);
+			$logging->insert($analytics_event);
 		}
 
 		// Get XML tags
@@ -192,6 +212,7 @@ class LandingPageController extends Controller
 		// Get user
     	$user = $this->get_user();
     	$user_id = $user->id;
+    	$logging = new Logging($user_id);
 
 		// Get landing page
 		$landing_page = LandingPage::where('id', $landing_page_id)->first();
@@ -207,6 +228,12 @@ class LandingPageController extends Controller
 			$original_idea->landing_pages = $original_idea->landing_pages - 1;
 			$new_idea->landing_pages = $new_idea->landing_pages + 1;
 
+			// Number of impressions and signups
+			$original_idea->impressions = $original_idea->impressions - $landing_page->impressions;
+			$new_idea->impressions = $new_idea->impressions + $landing_page->impressions;
+			$original_idea->signups = $original_idea->signups - $landing_page->signups;
+			$new_idea->signups = $new_idea->signups + $landing_page->signups;
+
 			// Name and ID of idea
 			$landing_page->idea_name = $new_idea->name;
 			$landing_page->idea_id = $new_idea_id;
@@ -215,6 +242,10 @@ class LandingPageController extends Controller
 			$original_idea->save();
 			$new_idea->save();
 			$landing_page->save();
+
+			// Log the event
+			$edit_idea_event = "User " . $user_id . " edited which idea that landing page " . $landing_page_id . " belongs to";
+			$logging->insert($edit_idea_event);
 		}
 
 		// Check if landing page name changed
@@ -223,6 +254,10 @@ class LandingPageController extends Controller
 			// Update
 			$landing_page->name = $new_landing_page_name;
 			$landing_page->save();
+
+			// Log the event
+			$edit_landing_page_meta_event = "User " . $user_id . " edited their meta information for the landing page with ID of " . $landing_page_id;
+			$logging->insert($edit_landing_page_meta_event);
 		}
 
 		// Get XML fields for the template
@@ -274,6 +309,11 @@ class LandingPageController extends Controller
 		for ($i = 0; $i < $num_of_loops; $i++) {
 			$xml->addChild($tags[$i], $values[$i]);
 		}
+
+		// Log the event
+		$logging = new Logging($user_id);
+    	$edit_xml_event = "User " . $user_id . " edited their landing page with ID of " . $landing_page_id;
+    	$logging->insert($edit_xml_event);
 
 		// Store this file
 		$filename = "landing_page_" . $landing_page_id . ".xml";

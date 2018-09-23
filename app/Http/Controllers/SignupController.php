@@ -8,6 +8,8 @@ use App\LandingPage;
 use App\UserAnalytics;
 use App\Idea;
 
+use App\Custom\Logging;
+
 class SignupController extends Controller
 {
 	/* CRUD Public Functions */
@@ -81,6 +83,11 @@ class SignupController extends Controller
 		$signup->user_id = $user_id;
 		$signup->save();
 
+		// Log the event
+		$logging = new Logging($user_id);
+		$new_signup_event = "There was a new signup for User " . $user_id . " for the landing page with ID of " . $landing_page->id . " where the first name of the signup was '" . $first_name . "' and the last name was '" . $last_name . "' and email of '" . $email . "'";
+		$logging->insert($new_signup_event);
+
 		return "Successful";
 	}
 
@@ -110,6 +117,12 @@ class SignupController extends Controller
 	}
 
 	private function delete_signup($signup_id) {
+		// Log the event
+		$signup = Signup::where('id', $signup_id)->first();
+		$logging = new Logging($signup->user_id);
+		$delete_signup_event = "User " . $signup->user_id . " deleted that belonged to landing page with ID of " . $signup->landing_page_id . " and where the first name was '" . $signup->first_name . "', last name was '" . $signup->last_name . "' and email was '" . $signup->email . "'";
+		$logging->insert($delete_signup_event);
+
 		// Load up signup object and delete
 		return Signup::where('id', $signup_id)->delete();
 	}

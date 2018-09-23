@@ -9,6 +9,8 @@ use App\Idea;
 use App\UserAnalytics;
 use App\User;
 
+use App\Custom\Logging;
+
 class IdeasController extends Controller
 {
     public function create(Request $data) {
@@ -35,6 +37,11 @@ class IdeasController extends Controller
     	$idea->signups = 0;
     	$idea->save();
 
+        // Log the event
+        $logging = new Logging($user_id);
+        $new_idea_event = "User " . $user_id . " created a new Value Idea with the name of " . $name;
+        $logging->insert($new_idea_event);
+
     	// Redirect to dashboard
     	return redirect(url('/dashboard/'));
     }
@@ -59,6 +66,11 @@ class IdeasController extends Controller
     		$idea->name = $name;
     		$idea->description = $description;
     		$idea->save();
+
+            // Log the event
+            $logging = new Logging($user_id);
+            $edit_idea_event = "User " . $user_id . " edited the Value Idea with ID of " . $idea->id;
+            $logging->insert($edit_idea_event);
 
     		// Redirect to dashboard
     		return redirect(url('/dashboard/'));

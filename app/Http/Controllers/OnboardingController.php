@@ -18,6 +18,8 @@ use App\Template;
 use App\LandingPage;
 use App\UserAnalytics;
 
+use App\Custom\Logging;
+
 class OnboardingController extends Controller
 {
 	/* --------------------- *\
@@ -56,6 +58,11 @@ class OnboardingController extends Controller
     	$user_analytics = UserAnalytics::where('user_id', $user_id)->first();
     	$user_analytics->number_of_ideas = $user_analytics->number_of_ideas + 1;
     	$user_analytics->save();
+
+    	// Log the event
+    	$logging = new Logging($user_id);
+    	$new_idea_event = "(On-boarding) User " . $user_id . " created a new Value Idea with the name of " . $name;
+    	$logging->insert($new_idea_event);
 
     	// Go to next page
     	return redirect(url('/onboarding/choose-template'));
@@ -166,6 +173,11 @@ class OnboardingController extends Controller
 		$idea = Idea::where('id', $idea_id)->first();
 		$idea->landing_pages = $idea->landing_pages + 1;
 		$idea->save();
+
+		// Log the event
+		$logging = new Logging($user_id);
+		$new_landing_page_event = "(On-boarding) User " . $user_id . " created a new landing page with the name of " . $landing_page->name;
+		$logging->insert($new_landing_page_event);
 
 		// Redirect back to onboarding
 		return redirect(url('/onboarding/share'));
