@@ -29,11 +29,11 @@ class SignupController extends Controller
 		}
 	}
 
-	public function delete($signup_id) {
-		if ($this->delete_signup($signup_id) == true) {
-			return "Successful";
+	public function delete(Request $data) {
+		if ($this->delete_signup($data->signup_id) == true) {
+			return redirect(url('/dashboard/signups'));
 		} else {
-			return "Failed";
+			return redirect()->back();
 		}
 	}
 

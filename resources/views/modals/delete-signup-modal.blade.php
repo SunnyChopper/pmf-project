@@ -8,7 +8,7 @@
 				</button>
 			</div>
 			<div class="modal-body">
-				<form>
+				<form action="/signups/delete/" method="post">
 					{{ csrf_field() }}
 					<input type="hidden" name="signup_id">
 					<div class="row">

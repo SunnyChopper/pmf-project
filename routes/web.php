@@ -63,6 +63,7 @@ Route::get('/dashboard/lp/test', 'LandingPageController@test');
 
 // Signups
 Route::post('/signups/create', 'SignupController@create');
+Route::post('/signups/delete', 'SignupController@delete');
 
 // User Control
 Route::post('/login/attempt', 'UsersController@login');
