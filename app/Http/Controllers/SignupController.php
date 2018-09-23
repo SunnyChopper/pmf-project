@@ -123,6 +123,21 @@ class SignupController extends Controller
 		$delete_signup_event = "User " . $signup->user_id . " deleted a signup that belonged to landing page with ID of " . $signup->landing_page_id . " and where the first name was '" . $signup->first_name . "', last name was '" . $signup->last_name . "' and email was '" . $signup->email . "'";
 		$logging->insert($delete_signup_event);
 
+		// Update the landing page metrics
+		$landing_page = LandingPage::where('id', $signup->landing_page_id)->first();
+		$landing_page->signups = $landing_page->signups - 1;
+		$landing_page->save();
+
+		// Update the idea metrics
+		$idea = Idea::where('id', $landing_page->idea_id)->first();
+		$idea->signups = $idea->signups - 1;
+		$idea->save();
+
+		// Update user analytics
+		$analytics = UserAnalytics::where('user_id', $signup->user_id)->first();
+		$analytics->number_of_signups = $analytics->number_of_signups - 1;
+		$analytics->save();
+
 		// Load up signup object and delete
 		return Signup::where('id', $signup_id)->delete();
 	}
