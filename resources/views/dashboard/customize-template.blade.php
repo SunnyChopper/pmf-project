@@ -15,19 +15,25 @@
 			<div class="row">
 				<div class="col-lg-6 col-md-8 col-sm-12 col-xs-12">
 					<h4>Landing Page Meta Information</h4>
-					<div class="form-group mt-8">
-						<label>Select Idea</label>
-						<select form="create_lp_form"  class="form-control" name="idea_id">
-							@foreach($ideas as $idea)
-								<option value="{{ $idea->id }}">{{ $idea->name }}</option>
-							@endforeach
-						</select>
-					</div>
+					<ul class="list-group mt-16">
+						<li class="list-group-item">
+							<div class="form-group">
+								<label>Select Idea</label>
+								<select form="create_lp_form"  class="form-control" name="idea_id">
+									@foreach($ideas as $idea)
+										<option value="{{ $idea->id }}">{{ $idea->name }}</option>
+									@endforeach
+								</select>
+							</div>
+						</li>
 
-					<div class="form-group mt-8">
-						<label>Name of Landing Page</label>
-						<input type="text" name="landing_page_name" class="form-control">
-					</div>
+						<li class="list-group-item">
+							<div class="form-group">
+								<label>Name of Landing Page</label>
+								<input type="text" name="landing_page_name" class="form-control">
+							</div>
+						</li>
+					</ul>
 				</div>
 			</div>
 
@@ -35,40 +41,49 @@
 			<div class="row mt-16">
 				<div class="col-lg-8 col-md-10 col-sm-12 col-xs-12">
 					<h4>Landing Page Fields</h4>
-					<div class="row mt-8">
-						@foreach($xml_tags as $tag => $tag_data)
-							<?php
-								switch ($tag_data[0]) {
-									case "text":
-										echo "<div class='col-lg-8 col-md-10 col-sm-12 col-xs-12'>";
-											echo "<div class='form-group'>";
-												echo "<label>" . $tag_data[1] . ":</label>";
-												echo "<input type='text' class='form-control' name='" . $tag ."' required>";
-											echo "</div>";
-										echo "</div>";
-										break;
-									case "textarea":
-										echo "<div class='col-lg-10 col-md-12 col-sm-12 col-xs-12'>";
-											echo "<div class='form-group'>";
-												echo "<label>" . $tag_data[1] . ":</label>";
-												echo "<textarea form='create_lp_form' class='form-control' name='" . $tag ."' required></textarea>";
-											echo "</div>";
-										echo "</div>";
-										break;
-									case "date":
-										echo "<div class='col-lg-6 col-md-8 col-sm-12 col-xs-12'>";
-											echo "<div class='form-group'>";
-												echo "<label>" . $tag_data[1] . ":</label>";
-												echo "<input type='date' class='form-control' name='" . $tag . "' required>";
-											echo "</div>";
-										echo "</div>";
-										break;
-									default:
-										break;
-								}
-							?>
-						@endforeach
-					</div>
+						<ul class="list-group mt-16 mb-16">
+							@foreach($xml_tags as $tag => $tag_data)
+								<?php
+									switch ($tag_data[0]) {
+										case "text":
+											echo "<li class='list-group-item'>";
+												echo "<div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>";
+													echo "<div class='form-group'>";
+														echo "<h5>" . $tag_data[1] . ":</h5>";
+														echo "<p>" . $tag_data[2] . "</p>";
+														echo "<input type='text' class='form-control' name='" . $tag ."' required>";
+													echo "</div>";
+												echo "</div>";
+											echo "</li>";
+											break;
+										case "textarea":
+											echo "<li class='list-group-item'>";
+												echo "<div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>";
+													echo "<div class='form-group'>";
+														echo "<h5>" . $tag_data[1] . ":</h5>";
+														echo "<p>" . $tag_data[2] . "</p>";
+														echo "<textarea form='create_lp_form' class='form-control' name='" . $tag ."' required></textarea>";
+													echo "</div>";
+												echo "</div>";
+											echo "</li>";
+											break;
+										case "date":
+											echo "<li class='list-group-item'>";
+												echo "<div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>";
+													echo "<div class='form-group'>";
+														echo "<h5>" . $tag_data[1] . ":</h5>";
+														echo "<p>" . $tag_data[2] . "</p>";
+														echo "<input type='date' class='form-control' name='" . $tag . "' required>";
+													echo "</div>";
+												echo "</div>";
+											echo "</li>";
+											break;
+										default:
+											break;
+									}
+								?>
+							@endforeach
+						</ul>
 
 					<div class="row">
 						<div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
