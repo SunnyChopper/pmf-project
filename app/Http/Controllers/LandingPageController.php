@@ -176,7 +176,7 @@ class LandingPageController extends Controller
 
 			// Log the event
 			$landing_page_view_event = "Someone with the IP of " . $ip . " has viewed the landing page with ID of " . $landing_page_id .  " that belongs to User " . $user_id; 
-			$analytics_event = "User " . $user_id . " now has " . $analytics->number_of_impressions . " for this landing page.";
+			$analytics_event = "User " . $user_id . " now has " . $landing_page->impressions . " impressions for this landing page.";
 			$logging = new Logging($user_id);
 			$logging->insert($landing_page_view_event);
 			$logging->insert($analytics_event);
