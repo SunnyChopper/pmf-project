@@ -38,7 +38,7 @@ class SignupController extends Controller
 	}
 
 	/* CRUD Private Functions */
-	private function create_signup($data) {
+	private function create_signup(Request $data) {
 		// Gather relevant data
 		$landing_page_id = $data->landing_page_id;
 		$name = $data->name;
