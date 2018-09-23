@@ -120,7 +120,7 @@ class SignupController extends Controller
 		// Log the event
 		$signup = Signup::where('id', $signup_id)->first();
 		$logging = new Logging($signup->user_id);
-		$delete_signup_event = "User " . $signup->user_id . " deleted that belonged to landing page with ID of " . $signup->landing_page_id . " and where the first name was '" . $signup->first_name . "', last name was '" . $signup->last_name . "' and email was '" . $signup->email . "'";
+		$delete_signup_event = "User " . $signup->user_id . " deleted a signup that belonged to landing page with ID of " . $signup->landing_page_id . " and where the first name was '" . $signup->first_name . "', last name was '" . $signup->last_name . "' and email was '" . $signup->email . "'";
 		$logging->insert($delete_signup_event);
 
 		// Load up signup object and delete
