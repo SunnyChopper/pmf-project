@@ -93,7 +93,7 @@ class SignupController extends Controller
 		$logging->insert($new_signup_event);
 
 		// Send email to user
-		$user = $this->get_user();
+		$user = User::where('id', $user_id)->first();
 		$user_email = $user->email;
 		$subject = "⚡️ New Signup on OptinDev ⚡️";
 		$header_text = "New Signup";
