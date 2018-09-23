@@ -67,7 +67,7 @@
 
 		<div class="footer">
 			<p>&copy; 2018 OptinDev</p>
-			<p>You are receiving this email because you registered for an account at OptinDev. If you wish to turn off email notifications, please click <a href="http://www.google.com">here</a>.</p>
+			<p>You are receiving this email because you registered for an account at OptinDev. If you wish to turn off or modify email notifications, please click <a href="http://www.optindev.com/dashboard/mail-settings">here</a>.</p>
 		</div>
 	</body>
 </html>

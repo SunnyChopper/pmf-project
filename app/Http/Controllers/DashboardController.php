@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
 use App\Custom\Analytics;
+use App\Custom\Mailing;
 
 use App\Idea;
 use App\LandingPage;
@@ -163,6 +164,21 @@ class DashboardController extends Controller
         $user_id = $user->id;
 
         return view('dashboard.trial-ended')->with('page_title', $page_title)->with('user', $user);
+    }
+
+    public function test() {
+        // Send email to user
+        $user = $this->get_user();
+        $user_email = $user->email;
+        $subject = "⚡️ New Signup on OptinDev ⚡️";
+        $header_text = "New Signup";
+        $body = "<p>Congratulations, you just acquired a new signup on OptinDev for your landing page: <b>50 Tips to Make Money Online</b>.</p>";
+        $body .= "<p>Here are the details:</p><ul>";
+        $body .= "</ul>";
+        $body .= "<p>You can check the status of your landing pages and signups by clicking <a href='" . url('/dashboard/') . "'>here.</a></p>";
+        $body .= "<p>Remember, you can always add your signups to your favorite email service provider and if you need to delete a signup for any particular reason, you can do so from the dashboard.</p>";
+        $mail = new Mailing("notification", $user_email, $subject, $user->first_name, $user->last_name, $body, $header_text);
+        $mail->send();
     }
 
     /* Private Helper Functions */

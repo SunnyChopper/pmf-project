@@ -3,12 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
+
 use App\Signup;
 use App\LandingPage;
 use App\UserAnalytics;
 use App\Idea;
+use App\User;
 
 use App\Custom\Logging;
+use App\Custom\Mailing;
 
 class SignupController extends Controller
 {
@@ -88,6 +92,22 @@ class SignupController extends Controller
 		$new_signup_event = "There was a new signup for User " . $user_id . " for the landing page with ID of " . $landing_page->id . " where the first name of the signup was '" . $first_name . "' and the last name was '" . $last_name . "' and email of '" . $email . "'";
 		$logging->insert($new_signup_event);
 
+		// Send email to user
+		$user = $this->get_user();
+		$user_email = $user->email;
+		$subject = "⚡️ New Signup on OptinDev ⚡️";
+		$header_text = "New Signup";
+		$body = "<p>Congratulations, you just acquired a new signup on OptinDev for your landing page: <b>" . $landing_page->name . "</b>.</p>";
+		$body .= "<p>Here are the details:</p><ul>";
+		$body .= "<li>First Name: " . $first_name . "</li>";
+		$body .= "<li>Last Name: " . $last_name . "</li>";
+		$body .= "<li>Email: " . $email . "</li>";
+		$body .= "</ul>";
+		$body .= "<p>You can check the status of your landing pages and signups by clicking <a href='" . url('/dashboard/') . "'>here.</a></p>";
+		$body .= "<p>Remember, you can always add your signups to your favorite email service provider and if you need to delete a signup for any particular reason, you can do so from the dashboard.</p>";
+		$mail = new Mailing("notification", $user_email, $subject, $user->first_name, $user->last_name, $body, $header_text);
+		$mail->send();
+
 		return "Successful";
 	}
 
@@ -148,5 +168,15 @@ class SignupController extends Controller
 		$last_name = (strpos($name, ' ') === false) ? '' : preg_replace('#.*\s([\w-]*)$#', '$1', $name);
 		$first_name = trim( preg_replace('#'.$last_name.'#', '', $name ) );
 		return array($first_name, $last_name);
+	}
+
+	private function get_user() {
+		// Check if session variable set
+		if (Session::get('logged_in') != true) {
+			return 0;
+		} else {
+			// Return user
+			return User::where('id', Session::get('user_id'))->first();
+		}
 	}
 }
