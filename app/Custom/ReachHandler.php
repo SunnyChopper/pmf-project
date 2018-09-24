@@ -28,8 +28,14 @@ class ReachHandler {
 
 	/* Private functions */
 	private function needToIncreaseReach() {
-		if (Reach::find($this->ip_address)->where('landing_page_id', $this->landing_page_id)->count() > 0) {
-			return false;
+		$can_find_ip = Reach::where('ip_address', $this->ip_address)->count();
+		if ($can_find_ip > 0) {
+			$can_find_landing_page = Reach::where('landing_page_id', $this->landing_page_id)->count();
+			if ($can_find_landing_page > 0) {
+				return false;
+			} else {
+				return true;
+			}
 		} else {
 			return true;
 		}
