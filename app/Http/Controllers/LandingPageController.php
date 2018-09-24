@@ -269,7 +269,7 @@ class LandingPageController extends Controller
 		}
 
 		// Check if Google Analytics changed
-		$new_google_analytics_code = $data->google_analytics_code;
+		$new_google_analytics_code = Session::get('google_analytics_code');
 		if ($new_google_analytics_code != $landing_page->google_analytics_code) {
 			// Update
 			$landing_page->google_analytics_code = $new_google_analytics_code;
