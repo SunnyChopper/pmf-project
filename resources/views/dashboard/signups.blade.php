@@ -16,24 +16,26 @@
                     <table class="table table-borderless table-striped table-earning">
                         <thead>
                             <tr>
-                            	<th>Date</th>
+                            	{{-- <th>Date</th> --}}
                                 <th>Name</th>
                                 <th>Email</th>
-                                <th>Marketing Consent</th>
+                                <th>Landing Page</th>
+                                {{-- <th>Marketing Consent</th> --}}
                                 <th></th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($signups as $signup)
                                 <tr>
-                                    <td>{{ $signup->created_at->format('F d, Y')}}</td>
+                                    {{-- <td>{{ $signup->created_at->format('F d, Y')}}</td> --}}
                                     <td>{{ $signup->first_name }} {{ $signup->last_name }}</td>
                                     <td>{{ $signup->email }}</td>
-                                    @if($signup->marketing_consent == 1)
+                                    <td>{{ App\LandingPage::where('id', $signup->landing_page_id)->first()->name }}</td>
+                                    {{-- @if($signup->marketing_consent == 1)
                                     <td>Yes</td>
                                     @else
                                     <td>No</td>
-                                    @endif
+                                    @endif --}}
                                     <td><button class="btn btn-sm btn-danger" id="{{ $signup->id }}" onclick="showDeleteSignupModal(this.id);">Delete</button></td>
                                 </tr>
                             @endforeach
