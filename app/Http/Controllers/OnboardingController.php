@@ -108,6 +108,10 @@ class OnboardingController extends Controller
     	// Get XML fields for the template
     	$xml_tags = $this->get_xml_tags($data->template_id);
 
+    	// Save Google Analytics code within session variable
+    	Session::put('google_analytics_code', $data->google_analytics_code);
+    	Session::save();
+
     	// Take to rendering
     	return view($path_to_html)->with('data', $data)->with('template_id', $data->template_id)->with('xml_tags', $xml_tags);
 	}
@@ -125,6 +129,9 @@ class OnboardingController extends Controller
 		// Get landing page data
 		$landing_page_name = $data->landing_page_name;
 		$landing_page_preview_link = "";
+
+		// Get Google Analytics code
+		$google_analytics_code = Session::get('google_analytics_code');
 
 		// Get template info
     	$template = Template::where('id', $data->template_id)->first();

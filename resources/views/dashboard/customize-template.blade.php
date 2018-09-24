@@ -5,7 +5,7 @@
 		<div class="row">
 			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 				<h2 class="title-1">Customize Your Template</h2>
-				<p class="mt-2">Fill in the fields, click on next, and it will render your landing page.</p>
+				<p class="mt-2">Fields with <span class="red">*</span> are required.</p>
 				<hr />
 			</div>
 		</div>
@@ -18,7 +18,8 @@
 					<ul class="list-group mt-16">
 						<li class="list-group-item">
 							<div class="form-group">
-								<label>Select Idea</label>
+								<h5>Select Value Idea<span class='red'>*</span>:</h5>
+								<p class="mb-2">The landing page will belong to the chosen Value Idea.</p>
 								<select form="create_lp_form"  class="form-control" name="idea_id">
 									@foreach($ideas as $idea)
 										<option value="{{ $idea->id }}">{{ $idea->name }}</option>
@@ -29,8 +30,17 @@
 
 						<li class="list-group-item">
 							<div class="form-group">
-								<label>Name of Landing Page</label>
-								<input type="text" name="landing_page_name" class="form-control">
+								<h5>Name of Landing Page<span class="red">*</span>:</h5>
+								<p class="mb-2">This is how you will identify the landing page in your admin dashboard. Your audience will not see this.</p>
+								<input type="text" name="landing_page_name" class="form-control" required>
+							</div>
+						</li>
+
+						<li class="list-group-item">
+							<div class="form-group">
+								<h5>Google Analytics Code</h5>
+								<p class="mb-2">If you would like to track users that come to your landing page using Google Analytics, you can input the code snippet here.</p>
+								<textarea form="create_lp_form" name="google_analytics_code" class="form-control" rows="4"></textarea>
 							</div>
 						</li>
 					</ul>
@@ -49,7 +59,7 @@
 											echo "<li class='list-group-item'>";
 												echo "<div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>";
 													echo "<div class='form-group'>";
-														echo "<h5>" . $tag_data[1] . ":</h5>";
+														echo "<h5>" . $tag_data[1] . "<span class='red'>*</span>:</h5>";
 														echo "<p>" . $tag_data[2] . "</p>";
 														echo "<input type='text' class='form-control' name='" . $tag ."' required>";
 													echo "</div>";
@@ -60,7 +70,7 @@
 											echo "<li class='list-group-item'>";
 												echo "<div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>";
 													echo "<div class='form-group'>";
-														echo "<h5>" . $tag_data[1] . ":</h5>";
+														echo "<h5>" . $tag_data[1] . "<span class='red'>*</span>:</h5>";
 														echo "<p>" . $tag_data[2] . "</p>";
 														echo "<textarea form='create_lp_form' class='form-control' name='" . $tag ."' required></textarea>";
 													echo "</div>";
@@ -71,7 +81,7 @@
 											echo "<li class='list-group-item'>";
 												echo "<div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>";
 													echo "<div class='form-group'>";
-														echo "<h5>" . $tag_data[1] . ":</h5>";
+														echo "<h5>" . $tag_data[1] . "<span class='red'>*</span>:</h5>";
 														echo "<p>" . $tag_data[2] . "</p>";
 														echo "<input type='date' class='form-control' name='" . $tag . "' required>";
 													echo "</div>";

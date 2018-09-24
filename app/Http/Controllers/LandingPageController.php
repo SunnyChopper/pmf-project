@@ -66,6 +66,10 @@ class LandingPageController extends Controller
 
     	// Get XML fields for the template
     	$xml_tags = $this->get_xml_tags($template_id);
+
+    	// Save Google Analytics code to Session
+    	Session::put('google_analytics_code', $data->google_analytics_code);
+    	Session::save();
 		
 		// Check to see if in edit mode
 		if ($mode == "edit") {
@@ -89,6 +93,9 @@ class LandingPageController extends Controller
 		$landing_page_name = $data->landing_page_name;
 		$landing_page_preview_link = "";
 
+		// Get Google Analytics code
+		$google_analytics_code = Session::get('google_analytics_code');
+
 		// Get template info
     	$template = Template::where('id', $template_id)->first();
     	$path_to_html = "templates." . $template->path_to_html;
@@ -103,6 +110,7 @@ class LandingPageController extends Controller
 		$landing_page->impressions = 0;
 		$landing_page->signups = 0;
 		$landing_page->template_id = $template_id;
+		$landing_page->google_analytics_code = $google_analytics_code;
 		$landing_page->save();
 		$landing_page_id = $landing_page->id;
 
@@ -186,7 +194,7 @@ class LandingPageController extends Controller
 		$xml_data = $this->read_xml('local', $xml_link);
 
 		// Get HTML
-		return view($template_path)->with('xml_data', $xml_data)->with('landing_page_id', $landing_page_id);
+		return view($template_path)->with('xml_data', $xml_data)->with('landing_page_id', $landing_page_id)->with('landing_page', $landing_page);
 	}
 
 	public function edit($landing_page_id) {
@@ -258,6 +266,18 @@ class LandingPageController extends Controller
 			// Log the event
 			$edit_landing_page_meta_event = "User " . $user_id . " edited their meta information for the landing page with ID of " . $landing_page_id;
 			$logging->insert($edit_landing_page_meta_event);
+		}
+
+		// Check if Google Analytics changed
+		$new_google_analytics_code = $data->google_analytics_code;
+		if ($new_google_analytics_code != $landing_page->google_analytics_code) {
+			// Update
+			$landing_page->google_analytics_code = $new_google_analytics_code;
+			$landing_page->save();
+
+			// Log the event
+			$edit_google_analytics_code_event = "User " . $user_id . " edited their Google Analytics code for the landing page with ID of " . $landing_page_id;
+			$logging->insert($edit_google_analytics_code_event);
 		}
 
 		// Get XML fields for the template

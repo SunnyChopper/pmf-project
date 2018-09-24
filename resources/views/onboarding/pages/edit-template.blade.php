@@ -5,6 +5,7 @@
 		<div class="col-lg-8 offset-lg-2 col-md-8 offset-md-2 col-sm-12 col-xs-12">
 			<h3>Customize Your Template</h3>
 			<p>Enter in the values for each of the fields below and then click Render. Included are descriptions to help you come up with text.</p>
+			<p>Fields with <span class="red">*</span> are required.</p>
 		</div>
 	</div>
 
@@ -18,9 +19,19 @@
 						<li class="list-group-item">
 							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mt-16 mb-16">
 								<div class="form-group mt-8">
-									<h5>Name of Landing Page</h5>
+									<h5>Name of Landing Page<span class="red">*</span>:</h5>
 									<p class="mb-2">Your audience won't see this but this is how you will identify this opt-in page.</p>
 									<input type="text" name="landing_page_name" class="form-control" required>
+								</div>
+							</div>
+						</li>
+
+						<li class="list-group-item">
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								<div class="form-group mt-8">
+									<h5>Google Analytics Code:</h5>
+									<p class="mb-2">If you would like to track users that come to your landing page using Google Analytics, you can input the code snippet here.</p>
+									<textarea form="create_lp_form" name="google_analytics_code" class="form-control" rows="4"></textarea>
 								</div>
 							</div>
 						</li>
@@ -32,7 +43,7 @@
 										case "text":
 											echo "<div class='col-lg-12 col-md-12 col-sm-12 col-xs-12 mt-16 mb-16'>";
 												echo "<div class='form-group'>";
-													echo "<h5>" . $tag_data[1] . ":</h5>";
+													echo "<h5>" . $tag_data[1] . "<span class='red'>*</span>:</h5>";
 													echo "<p>" . $tag_data[2] . "</p>";
 													echo "<div class='row'>";
 														echo "<div class='col-lg-10 col-md-8 col-sm-12 col-xs-12'>";
@@ -45,7 +56,7 @@
 										case "textarea":
 											echo "<div class='col-lg-12 col-md-12 col-sm-12 col-xs-12 mt-16 mb-16'>";
 												echo "<div class='form-group'>";
-													echo "<h5>" . $tag_data[1] . ":</h5>";
+													echo "<h5>" . $tag_data[1] . "<span class='red'>*</span>:</h5>";
 													echo "<p>" . $tag_data[2] . "</p>";
 													echo "<textarea form='create_optin_form' class='form-control' name='" . $tag ."' required></textarea>";
 												echo "</div>";
@@ -54,7 +65,7 @@
 										case "date":
 											echo "<div class='col-lg-6 col-md-8 col-sm-12 col-xs-12 mt-16 mb-16'>";
 												echo "<div class='form-group'>";
-													echo "<h5>" . $tag_data[1] . ":</h5>";
+													echo "<h5>" . $tag_data[1] . "<span class='red'>*</span>:</h5>";
 													echo "<p>" . $tag_data[2] . "</p>";
 													echo "<input type='date' class='form-control' name='" . $tag . "' required>";
 												echo "</div>";

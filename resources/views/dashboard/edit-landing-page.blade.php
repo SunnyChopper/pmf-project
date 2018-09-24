@@ -5,7 +5,7 @@
 		<div class="row">
 			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 				<h2 class="title-1">Edit Your Landing Page</h2>
-				<p class="mt-2">Fill in the fields, click on next, and it will render your landing page.</p>
+				<p class="mt-2">Fields with <span class="red">*</span> are required.</p>
 				<hr />
 			</div>
 		</div>
@@ -14,62 +14,81 @@
 			@csrf
 			<input type="hidden" name="landing_page_id" value="{{ $landing_page->id }}">
 			<div class="row">
-				<div class="col-lg-6 col-md-8 col-sm-12 col-xs-12">
+				<div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
 					<h4>Landing Page Meta Information</h4>
-					<div class="form-group mt-8">
-						<label>Select Idea</label>
-						<select form="create_lp_form"  class="form-control" name="idea_id">
-							@foreach($ideas as $idea)
-								<option value="{{ $idea->id }}" <?php if($idea->id == $landing_page->idea_id) { echo "selected"; } ?>>{{ $idea->name }}</option>
-							@endforeach
-						</select>
-					</div>
+					<ul class="list-group mt-16">
+						<li class="list-group-item">
+							<div class="form-group">
+								<h5>Select Idea<span class='red'>*</span>:</h5>
+								<p class="mb-2">The landing page will belong to the chosen Value Idea.</p>
+								<select form="create_lp_form"  class="form-control" name="idea_id">
+									@foreach($ideas as $idea)
+										<option value="{{ $idea->id }}" <?php if($idea->id == $landing_page->idea_id) { echo "selected"; } ?>>{{ $idea->name }}</option>
+									@endforeach
+								</select>
+							</div>
+						</li>
 
-					<div class="form-group mt-8">
-						<label>Name of Landing Page</label>
-						<input type="text" name="landing_page_name" value="{{ $landing_page->name }}" class="form-control">
-					</div>
+						<li class="list-group-item">
+							<div class="form-group	">
+								<h5>Name of Landing Page<span class='red'>*</span>:</h5>
+								<p class="mb-2">This is how you will identify the landing page in your admin dashboard. Your audience will not see this.</p>
+								<input type="text" name="landing_page_name" value="{{ $landing_page->name }}" class="form-control">
+							</div>
+						</li>
+
+						<li class="list-group-item">
+							<div class="form-group">
+								<h5>Google Analytics Code:</h5>
+								<p class="mb-2">If you would like to track users that come to your landing page using Google Analytics, you can input the code snippet here.</p>
+								<textarea form="create_lp_form" name="google_analytics_code" class="form-control" rows="4">{{ $landing_page->google_analytics_code }}</textarea>
+							</div>
+						</li>
+					</ul>
 				</div>
 			</div>
 
 			@if(count($ideas) != 0)
-			<div class="row mt-16">
+			<div class="row mt-32">
 				<div class="col-lg-8 col-md-10 col-sm-12 col-xs-12">
 					<h4>Landing Page Fields</h4>
-					<div class="row mt-8">
+					<ul class="list-group mt-16 mb-16">
 						@foreach($xml_tags as $tag => $tag_data)
 							<?php
 								switch ($tag_data[0]) {
 									case "text":
-										echo "<div class='col-lg-8 col-md-10 col-sm-12 col-xs-12'>";
+										echo "<li class='list-group-item'>";
 											echo "<div class='form-group'>";
-												echo "<label>" . $tag_data[1] . ":</label>";
+												echo "<h5>" . $tag_data[1] . "<span class='red'>*</span>:</h5>";
+												echo "<p>" . $tag_data[2] . "</p>";
 												echo "<input type='text' class='form-control' name='" . $tag ."' value='" . $xml_data[$tag] . "' required>";
 											echo "</div>";
-										echo "</div>";
+										echo "</li>";
 										break;
 									case "textarea":
-										echo "<div class='col-lg-10 col-md-12 col-sm-12 col-xs-12'>";
+										echo "<li class='list-group-item'>";
 											echo "<div class='form-group'>";
-												echo "<label>" . $tag_data[1] . ":</label>";
+												echo "<h5>" . $tag_data[1] . "<span class='red'>*</span>:</h5>";
+												echo "<p>" . $tag_data[2] . "</p>";
 												echo "<textarea form='create_lp_form' class='form-control' name='" . $tag ."' required>" . $xml_data[$tag] . "</textarea>";
 											echo "</div>";
-										echo "</div>";
+										echo "</li>";
 										break;
 									case "date":
-										echo "<div class='col-lg-6 col-md-8 col-sm-12 col-xs-12'>";
+										echo "<li class='list-group-item'>";
 											echo "<div class='form-group'>";
-												echo "<label>" . $tag_data[1] . ":</label>";
+												echo "<h5>" . $tag_data[1] . "<span class='red'>*</span>:</h5>";
+												echo "<p>" . $tag_data[2] . "</p>";
 												echo "<input type='date' class='form-control' name='" . $tag . "' value='" . $xml_data[$tag] . "' required>";
 											echo "</div>";
-										echo "</div>";
+										echo "</li>";
 										break;
 									default:
 										break;
 								}
 							?>
 						@endforeach
-					</div>
+					</ul>
 
 					<div class="row">
 						<div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">

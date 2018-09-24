@@ -1,19 +1,23 @@
 <html>
 	<head>
 		<!-- Required meta tags-->
-	    <meta charset="UTF-8">
-	    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-	    <title>{{ $xml_data["page_title"] }}</title>
+		<title>{{ $xml_data["page_title"] }}</title>
 
-	    <!-- Bootstrap CSS-->
-    	<link href="{{ URL::asset('vendor/bootstrap-4.1/bootstrap.min.css') }}" rel="stylesheet" media="all">
+		<!-- Bootstrap CSS-->
+		<link href="{{ URL::asset('vendor/bootstrap-4.1/bootstrap.min.css') }}" rel="stylesheet" media="all">
 
-    	<!-- Main CSS -->
-    	<link href="{{ URL::asset('css/style.css') }}" rel="stylesheet" media="all">
+		<!-- Main CSS -->
+		<link href="{{ URL::asset('css/style.css') }}" rel="stylesheet" media="all">
 
-    	<!--  Custom CSS -->
-    	<link href="{{ URL::asset('css/basic-opt-in-with-video.css') }}" rel="stylesheet" media="all">
+		<!--  Custom CSS -->
+		<link href="{{ URL::asset('css/basic-opt-in-with-video.css') }}" rel="stylesheet" media="all">
+
+		@if($landing_page->google_analytics_code != "")
+			{!! $landing_page->google_analytics_code !!}
+		@endif
 	</head>
 	<body>
 		<div style="width: 100%; height: 100%;" class="parent">
@@ -33,8 +37,8 @@
 				<div class="row">
 					<div class="col-lg-4 offset-lg-4 col-md-6 offset-md-3 col-sm-12 col-xs-12">
 						<div class="videoWrapper">
-						    <!-- Copy & Pasted from YouTube -->
-						    <iframe width="560" height="349" src="http://www.youtube.com/embed/{{ $xml_data['youtube_video_id'] }}" frameborder="0" allowfullscreen></iframe>
+							<!-- Copy & Pasted from YouTube -->
+							<iframe width="560" height="349" src="http://www.youtube.com/embed/{{ $xml_data['youtube_video_id'] }}" frameborder="0" allowfullscreen></iframe>
 						</div>
 					</div>
 				</div>
