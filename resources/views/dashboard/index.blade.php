@@ -72,6 +72,7 @@
                                 <th>Created On</th>
                                 <th>Idea Campaign</th>
                                 <th>Landing Pages</th>
+                                <th>Reach</th>
                                 <th>Impressions</th>
                                 <th>Signups</th>
                                 <th></th>
@@ -83,6 +84,7 @@
                                     <td>{{ $idea->created_at->format('F d, Y') }}</td>
                                     <td>{{ $idea->name }}</td>
                                     <td>{{ $idea->landing_pages }}</td>
+                                    <td>{{ $idea->reach }}</td>
                                     <td>{{ $idea->impressions }}</td>
                                     <td>{{ $idea->signups }}</td>
                                     <td><a href="/dashboard/idea/edit/{{ $idea->id }}" class="btn btn-warning">Edit</a></td>

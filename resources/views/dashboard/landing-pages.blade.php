@@ -24,6 +24,7 @@
 									<th>Created On</th>
 									<th>Name</th>
 									<th>Idea</th>
+									<th>Reach</th>
 									<th>Impressions</th>
 									<th>Signups</th>
 								</tr>
@@ -39,6 +40,7 @@
 										<td>{{ $landing_page->created_at->format('F d, Y') }}</td>
 										<td>{{ $landing_page->name }}</td>
 										<td>{{ $landing_page->idea_name }}</td>
+										<td>{{ $landing_page->reach }}</td>
 										<td>{{ $landing_page->impressions }}</td>
 										<td>{{ $landing_page->signups }}</td>
 									</tr>

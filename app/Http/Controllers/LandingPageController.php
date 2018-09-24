@@ -19,6 +19,7 @@ use App\LandingPage;
 use App\UserAnalytics;
 
 use App\Custom\Logging;
+use App\Custom\ReachHandler;
 
 class LandingPageController extends Controller
 {
@@ -167,6 +168,10 @@ class LandingPageController extends Controller
 			// Get the IP address of the user
 			$ip = $_SERVER['REMOTE_ADDR'];
 
+			// Increase reach
+			$reach = new ReachHandler($landing_page_id, $ip);
+			$reach->increaseReach();
+
 			// Increase impressions
 			$landing_page->impressions = $landing_page->impressions + 1;
 			$landing_page->save();
@@ -236,7 +241,9 @@ class LandingPageController extends Controller
 			$original_idea->landing_pages = $original_idea->landing_pages - 1;
 			$new_idea->landing_pages = $new_idea->landing_pages + 1;
 
-			// Number of impressions and signups
+			// Number of reach, impressions, and signups
+			$original_idea->reach = $original_idea->reach - $landing_page->reach;
+			$new_idea->reach = $new_idea->reach + $landing_page->reach;
 			$original_idea->impressions = $original_idea->impressions - $landing_page->impressions;
 			$new_idea->impressions = $new_idea->impressions + $landing_page->impressions;
 			$original_idea->signups = $original_idea->signups - $landing_page->signups;
