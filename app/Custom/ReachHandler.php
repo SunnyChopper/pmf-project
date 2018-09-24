@@ -41,7 +41,7 @@ class ReachHandler {
 		}
 	}
 
-	private function recordIPTransaction($ip_address) {
+	private function recordIPTransaction() {
 		$reach = new Reach;
 		$reach->ip_address = $this->ip_address;
 		$reach->landing_page_id = $this->landing_page_id;
