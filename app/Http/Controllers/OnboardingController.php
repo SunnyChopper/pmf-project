@@ -49,6 +49,7 @@ class OnboardingController extends Controller
     	$idea->user_id = $user_id;
     	$idea->name = $name;
     	$idea->description = $description;
+    	$idea->reach = 0;
     	$idea->landing_pages = 0;
     	$idea->impressions = 0;
     	$idea->signups = 0;
