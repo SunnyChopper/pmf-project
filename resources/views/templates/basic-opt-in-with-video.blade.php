@@ -18,6 +18,8 @@
 		@if($landing_page->google_analytics_code != "")
 			{!! $landing_page->google_analytics_code !!}
 		@endif
+
+
 	</head>
 	<body>
 		<div style="width: 100%; height: 100%;" class="parent">

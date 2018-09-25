@@ -19,6 +19,10 @@
 			<!-- Google Analytics code -->
 			{!! $landing_page->google_analytics_code !!}
 		@endif
+
+		@if(Request::get('ref'))
+			{{ Session::put('landing_page_ref', Request::get('ref')) }}
+		@endif
 	</head>
 	<body class="parent">
 		<div class="container child">
@@ -39,6 +43,8 @@
 					<h4 id="benefit_title">{{ $xml_data["benefit_title"] }}</h4>
 				</div>
 			</div>
+
+
 
 			<div class="row">
 				<div class="col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-sm-12 col-xs-12 text-center">

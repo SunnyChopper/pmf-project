@@ -116,10 +116,46 @@ $("#payment-form").on('submit', function(e) {
 	}
 });
 
+/* -------------------------- *\
+	Editing text functions
+\* -------------------------- */
+
+$("#copy_url_referrer").on('input', function() {
+	// Get base URL
+	var url = $("#copy_url_base").val();
+
+	// Get extension
+	var extension = $("#copy_url_referrer").val();
+
+	// Create full URL
+	if (extension != "") {
+		var full_url = url + "?ref=" + extension;
+		$("#copy_url_final").val(full_url);
+	} else {
+		$("#copy_url_final").val(url);
+	}
+});
+
 
 /* -------------------------- *\
 	Modal functions
 \* -------------------------- */
+
+function showCopyURLModal(url_extension) {
+	// Create the url
+	var host = document.location.host;
+	var url = host + "/lp/" + url_extension;
+
+	// Open copy URL modal
+	$("#copy_url_modal").appendTo("body");
+	$("#copy_url_modal").modal('show');
+
+	// Set disabled input
+	$("#copy_url_final").val(url);
+
+	// Set hidden input
+	$("#copy_url_base").val(url);
+}
 
 function showDeleteSignupModal(signup_id) {
 	// Set the hidden input

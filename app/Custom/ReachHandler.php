@@ -5,6 +5,7 @@ namespace App\Custom;
 use App\Reach;
 use App\LandingPage;
 use App\Idea;
+use App\LandingPageRef;
 
 class ReachHandler {
 	/* Global variables */
@@ -23,6 +24,35 @@ class ReachHandler {
 			$this->increaseReachForLandingPage();
 			$this->increaseReachForIdea();
 			$this->recordIPTransaction();
+		}
+	}
+
+	public function increaseReachForRef($ref) {
+		if ($this->needToIncreaseReach() == true) {
+			// Check to see if record exists
+			if (LandingPageRef::where('landing_page_id', $landing_page_id)->count() > 0) {
+				// Rows exist for landing page, now let's check for the specific ref tag
+				if (LandingPageRef::where('landing_page_id', $landing_page_id)->where('ref_source', $ref)->count() > 0) {
+					// Yes, exists, simply have to edit
+					$landing_page_ref = LandingPageRef::where('landing_page_id', $landing_page_id)->where('ref_source', $ref)->first();
+					$landing_page_ref->reach = $landing_page_ref->reach + 1;
+					$landing_page_ref->save();
+				} else {
+					// No, create it
+					$landing_page_ref = new LandingPageRef;
+					$landing_page_ref->landing_page_id = $this->landing_page_id;
+					$landing_page_ref->ref_source = $ref;
+					$landing_page_ref->reach = 1;
+					$landing_page_ref->save();
+				}
+			} else {
+				// No, create it
+				$landing_page_ref = new LandingPageRef;
+				$landing_page_ref->landing_page_id = $this->landing_page_id;
+				$landing_page_ref->ref_source = $ref;
+				$landing_page_ref->reach = 1;
+				$landing_page_ref->save();
+			}
 		}
 	}
 

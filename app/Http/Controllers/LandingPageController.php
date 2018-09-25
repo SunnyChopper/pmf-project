@@ -20,6 +20,7 @@ use App\UserAnalytics;
 
 use App\Custom\Logging;
 use App\Custom\ReachHandler;
+use App\Custom\RefHandler;
 
 class LandingPageController extends Controller
 {
@@ -165,16 +166,30 @@ class LandingPageController extends Controller
 
 		// Update landing page analytics if not user
 		if (Session::get('user_id') != $user_id) {
+			// Check to see if need to set referral
+			if (Request::get('ref')) {
+				Session::put('landing_page_ref', Request::get('ref'));
+				$ref_handler = new RefHandler($landing_page_id, Request::get('ref'));
+			}
+
 			// Get the IP address of the user
 			$ip = $_SERVER['REMOTE_ADDR'];
 
 			// Increase reach
 			$reach = new ReachHandler($landing_page_id, $ip);
+			if (Request::get('ref')) {
+				$reach->increaseReachForRef(Request::get('ref'));
+			}
 			$reach->increaseReach();
 
 			// Increase impressions
 			$landing_page->impressions = $landing_page->impressions + 1;
 			$landing_page->save();
+
+			// Increase impressions for ref if available
+			if (Request::get('ref')) {
+				$ref_handler->createRefImpression();
+			}
 
 			// Get user ID for analytics purpose
 			$user_id = $landing_page->user_id;

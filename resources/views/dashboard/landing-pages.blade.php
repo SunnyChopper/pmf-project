@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+	@include('modals.copy-url-modal')
 	<div class="container">
 		<div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -35,7 +36,7 @@
 										<td>
 											<a href="/dashboard/lp/edit/{{ $landing_page->id }}" class="btn btn-sm btn-warning">Edit</a>
 											<a href="/lp/{{ Session::get('user_id') }}/{{ $landing_page->id }}" class="btn btn-sm btn-primary">View</a>
-											<button class="btn btn-sm btn-success" id="{{ Session::get('user_id') }}/{{ $landing_page->id }}" onclick="copyURL(this.id);">Copy URL</button>
+											<button class="btn btn-sm btn-success" id="{{ Session::get('user_id') }}/{{ $landing_page->id }}" onclick="showCopyURLModal(this.id);">Copy URL</button>
 										</td>
 										<td>{{ $landing_page->created_at->format('F d, Y') }}</td>
 										<td>{{ $landing_page->name }}</td>
@@ -70,10 +71,6 @@
 @section('page_js')
 <script type="text/javascript">
 	function copyURL(url_extension) {
-		// Create the url
-		var host = document.location.host;
-		var url = host + "/lp/" + url_extension;
-
 		// Create dummy input object to copy from
 		var $temp = $("<input>");
 		$("body").append($temp);

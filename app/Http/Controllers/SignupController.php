@@ -13,6 +13,7 @@ use App\User;
 
 use App\Custom\Logging;
 use App\Custom\Mailing;
+use App\Custom\RefHandler;
 
 class SignupController extends Controller
 {
@@ -107,6 +108,13 @@ class SignupController extends Controller
 		$body .= "<p>Remember, you can always add your signups to your favorite email service provider and if you need to delete a signup for any particular reason, you can do so from the dashboard.</p>";
 		$mail = new Mailing("notification", $user_email, $subject, $user->first_name, $user->last_name, $body, $header_text);
 		$mail->send();
+
+		// Check to see if ref
+		if (Session::has('landing_page_ref')) {
+			$ref = Session::get('landing_page_ref');
+			$ref_handler = new RefHandler($landing_page_id, $ref);
+			$ref_handler->createRefSignup();
+		}
 
 		return "Successful";
 	}
