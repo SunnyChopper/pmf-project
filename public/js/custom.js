@@ -125,7 +125,7 @@ $("#copy_url_referrer").on('input', function() {
 	var url = $("#copy_url_base").val();
 
 	// Get extension
-	var extension = $("#copy_url_referrer").val();
+	var extension = $("#copy_url_referrer").val().toLowercase();
 
 	// Create full URL
 	if (extension != "") {

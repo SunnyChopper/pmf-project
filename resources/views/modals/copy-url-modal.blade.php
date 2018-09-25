@@ -13,7 +13,7 @@
 					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 						<h5>Add a Tag</h5>
 						<p class="mb-2" style="line-height: 20px;"><small>If you want to track where your signups are coming from and how they convert, type in the traffic source below. You can view these stats from your Stats page.</small></p>
-						<input type="text" id="copy_url_referrer" class="form-control">
+						<input type="text" id="copy_url_referrer" class="form-control" placeholder="Add a Traffic Source Tag (ex. facebook)">
 					</div>
 				</div>
 
