@@ -6,9 +6,9 @@
 			<div class="container">
 				<div class="col-md-12 col-md-offset-0">
 					<div class="animate-box">
-						<h2 style="margin-bottom: 0px;">Grow your personal brand</h2>
-						<p style="line-height: 36px;">and capture more attention</p>
-						<p><a href="/plan/1" class="btn btn-primary btn-lg btn-custom">Start Beta Testing</a></p>
+						<h2 style="margin-bottom: 0px;">Start making more money</h2>
+						<p style="line-height: 36px;">with affiliate marketing</p>
+						<p><a href="/plan/1" class="btn btn-primary btn-sm btn-custom">Start Free Beta Testing</a></p>
 					</div>
 				</div>
 			</div>

@@ -8,11 +8,11 @@
 			<div class="col-lg-8 col-md-7 col-sm-12 col-xs-12">
 				<h2>What You Are Getting Today</h2>
 				<hr />
-				<p>Brands are popping up every single day and the need to stand out is become more crucial. This is the advantage you're getting today by investing in OptinDev:</p>
+				<p>Affiliate marketing brands are popping up every single day and the need to stand out is becoming ever more crucial. This is the advantage you're getting today by investing in OptinDev:</p>
 				<ul class="list-group">
 					<li class="list-group-item">
 						<h4 class="mb-4">Efficiently create effective opt-in pages</h4>
-						<p class="mb-0" style="line-height: 26px;">By utilizing the opt-in page builder, you can create new opt-in pages rapidly and publish for the wider internet.</p>
+						<p class="mb-0" style="line-height: 26px;">By utilizing the opt-in page builder, you can create new opt-in pages rapidly and publish to the wider internet.</p>
 					</li>
 					<li class="list-group-item">
 						<h4 class="mb-4">Cutting edge psychology to help you get attention</h4>
@@ -24,7 +24,7 @@
 					</li>
 					<li class="list-group-item">
 						<h4 class="mb-4">Get the help and support you need to grow</h4>
-						<p class="mb-0" style="line-height: 26px;">Having a problem with the software? Is something confusing you? Want to talk strategy? Hit our line and we'll get back to you.</p>
+						<p class="mb-0" style="line-height: 26px;">Having a problem with the software? Is something confusing you? Want to talk about yout strategy? Hit our line and we'll get back to you.</p>
 					</li>
 				</ul>
 			</div>
@@ -144,7 +144,7 @@
 								</div>
 								<div class="row">
 									<div class="col-lg-6 col-lg-offset-3 col-md-8 offset-md-2 col-sm-12 col-xs-12">
-										<input type="submit" id="submit_button" class="btn btn-success" style="width: 100%;" value="Checkout">
+										<input type="submit" id="submit_button" class="btn btn-success" style="width: 100%;" value="Let's Begin">
 									</div>
 								</div>
 							@else

@@ -7,7 +7,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-					<h2 class="text-center">Test Your Ideas Quickly</h2>
+					<h2 class="text-center">How We Help Affiliate Marketers</h2>
 					<hr />
 				</div>
 			</div>
@@ -41,7 +41,7 @@
 							<i class="icon-layers"></i>
 						</span>
 						<div class="desc">
-							<h3>Landing Page Builder</h3>
+							<h3>Opt-in Page Builder</h3>
 							<p>Quickly build simple and effective landing pages with insightful guiding questions to help you convert.</p>
 						</div>
 					</div>

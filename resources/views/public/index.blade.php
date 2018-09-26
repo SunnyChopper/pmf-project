@@ -6,7 +6,7 @@
 	<div class="container mt-64 mb-64">
 		<div class="row">
 			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-				<h2 class="text-center">Connect with Your Audience</h2>
+				<h2 class="text-center">Make More Money by Connecting with Your Audience</h2>
 				<hr />
 			</div>
 		</div>
@@ -16,7 +16,7 @@
 				<div class="feature-box">
 					<i class="icon-spinner10"></i>
 					<h3>Test Quickly</h3>
-					<p>By being able to quickly create opt-in pages, you can quickly test which ideas are getting more attention and create more content for that.</p>
+					<p>By being able to quickly create opt-in pages, you can quickly test which Value Ideas are getting more attention and create more content for that.</p>
 				</div>
 			</div>
 
@@ -32,7 +32,7 @@
 				<div class="feature-box">
 					<i class="icon-users"></i>
 					<h3>Build an Audience</h3>
-					<p>Quickly build an audience as the tool guides you on how to create value for your audience and then start to collect contact information</p>
+					<p>Quickly build an audience as the tool guides you on how to create value for your audience and start to collect contact information.</p>
 				</div>
 			</div>
 		</div>
@@ -42,13 +42,13 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-5 col-md-6 col-sm-12 col-xs-12">
-					<h3>Provide More Value to Your Audience</h3>
+					<h3>Provide More Value to Your Audience and Make More Money Doing So</h3>
 					<hr style="border: 0.5px solid #AAAAAA" />
 					<p class="mb-4">As more brands popup all over the Internet, the more your brand gets buried in the sea of social media.</p>
 					<p class="mb-4">So how do you stand out in a world where the news feed is always updating with no end in sight?</p>
 					<p class="mb-4">You provide more value to your audience and get as much of that value in front of your audience.</p>
 					<p class="mb-16">OptinDev helps you do exactly that.</p>
-					<a href="/plan/1" class="btn btn-success">Start your Beta Testing</a>
+					<a href="/plan/1?ref=front-page" class="btn btn-success">Start your Beta Testing</a>
 				</div>
 				<div class="col-lg-7 col-md-6 col-sm-12 col-xs-12">
 					<img src="{{ URL::asset('images/Mockup.png') }}" class="regular-image">

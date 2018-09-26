@@ -3,7 +3,7 @@
 		<div class="row row-pb-md">
 			<div class="col-md-3 colorlib-widget">
 				<h4>About {{ config('app.name') }}</h4>
-				<p>Helping entrepreneurs test their ideas quicker and cheaper so they can attain feedback and shorten up their Lean Startup cycles.</p>
+				<p>Helping affiliate marketers test their ideas quicker and cheaper so they can provide more value to their audience and in the process make more money.</p>
 				<p>
 					<ul class="colorlib-social-icons">
 						<li><a href="#"><i class="icon-twitter"></i></a></li>
