@@ -3,9 +3,9 @@
 @section('content')
 	<div class="row mt-16">
 		<div class="col-lg-8 offset-lg-2 col-md-8 offset-md-2 col-sm-12 col-xs-12">
-			<h3>Choose a Opt-in Page Template</h3>
-			<p>In order to give something of value, you must have a place on the Internet where you can exchange your item of value for their contact information. That's where our Opt-in Builder can help you.</p>
-			<p>However, just getting someone to your opt-in page isn't enough to make the exchange, sometimes you have to convince them and that's where having knowledge about psychology can help.</p>
+			<h3>Choosing an Opt-in Page Template</h3>
+			<p>In order to start making money, you must have a place on the Internet where you can exchange your item of value for their contact information. That's where our Opt-in Page Builder can help you.</p>
+			<p>However, just getting someone to your opt-in page isn't enough to make the exchange, sometimes you have to convince them to signup and that's where having knowledge about psychology can help.</p>
 			<p>Don't worry though, you don't have to go to school for psychology because our templates come pre-made with all the psychological biases baked into them. All you have to do is come up with the words.</p>
 			<p>So let's get right into it. Pick out a starter template.</p>
 		</div>

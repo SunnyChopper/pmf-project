@@ -5,7 +5,7 @@
 		<div class="row">
 			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 				<h2 class="title-1">Choose a Template</h2>
-				<p class="mt-2">Pick a pre-made template that you can use to quickly get your landing page up and running.</p>
+				<p class="mt-2">Pick a pre-made template that you can use to quickly get your opt-in page up and running.</p>
 				<hr />
 			</div>
 		</div>

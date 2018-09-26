@@ -6,9 +6,9 @@
 		<div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="overview-wrap">
-                    <h2 class="title-1">Landing Pages</h2>
+                    <h2 class="title-1">Opt-in Pages</h2>
                     @if(count($landing_pages) != 0)
-                    <a href="/dashboard/lp/create/choose-template"><button class="au-btn au-btn-icon au-btn--blue"><i class="zmdi zmdi-plus"></i>New Landing Page</button></a>
+                    <a href="/dashboard/lp/create/choose-template"><button class="au-btn au-btn-icon au-btn--blue"><i class="zmdi zmdi-plus"></i>New Opt-in Page</button></a>
                     @endif
                 </div>
             </div>
@@ -22,12 +22,12 @@
 							<thead>
 								<tr>
 									<th>Actions</th>
-									<th>Created On</th>
 									<th>Name</th>
-									<th>Idea</th>
+									<th>Value Idea</th>
 									<th>Reach</th>
 									<th>Impressions</th>
 									<th>Signups</th>
+									<th>Created On</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -38,12 +38,12 @@
 											<a href="/lp/{{ Session::get('user_id') }}/{{ $landing_page->id }}" class="btn btn-sm btn-primary">View</a>
 											<button class="btn btn-sm btn-success" id="{{ Session::get('user_id') }}/{{ $landing_page->id }}" onclick="showCopyURLModal(this.id);">Copy URL</button>
 										</td>
-										<td>{{ $landing_page->created_at->format('F d, Y') }}</td>
 										<td>{{ $landing_page->name }}</td>
 										<td>{{ $landing_page->idea_name }}</td>
 										<td>{{ $landing_page->reach }}</td>
 										<td>{{ $landing_page->impressions }}</td>
 										<td>{{ $landing_page->signups }}</td>
+										<td>{{ $landing_page->created_at->format('F d, Y') }}</td>
 									</tr>
 								@endforeach
 							</tbody>

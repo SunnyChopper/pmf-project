@@ -21,7 +21,7 @@
                     <a href="/dashboard/"><i class="fas fa-tachometer-alt"></i>Dashboard</a>
                 </li>
                 <li>
-                    <a href="/dashboard/landing-pages/"><i class="fas fa-file"></i>Landing Pages</a>
+                    <a href="/dashboard/optin-pages/"><i class="fas fa-file"></i>Opt-in Pages</a>
                 </li>
                 <li>
                     <a href="/dashboard/signups/"><i class="fas fa-user"></i>Signups</a>
@@ -46,7 +46,7 @@
                     <a href="/dashboard/"><i class="fas fa-tachometer-alt"></i>Dashboard</a>
                 </li>
                 <li>
-                    <a href="/dashboard/landing-pages/"><i class="fas fa-file"></i>Landing Pages</a>
+                    <a href="/dashboard/optin-pages/"><i class="fas fa-file"></i>Opt-in Pages</a>
                 </li>
                 <li>
                     <a href="/dashboard/signups/"><i class="fas fa-user"></i>Signups</a>

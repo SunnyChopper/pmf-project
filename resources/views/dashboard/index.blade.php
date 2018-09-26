@@ -7,7 +7,7 @@
                 <div class="overview-wrap">
                     <h2 class="title-1">Main Dashboard</h2>
                     @if(count($ideas) != 0)
-                    <a href="/dashboard/idea/create"><button class="au-btn au-btn-icon au-btn--blue"><i class="zmdi zmdi-plus"></i>New Idea</button></a>
+                    <a href="/dashboard/idea/create"><button class="au-btn au-btn-icon au-btn--blue"><i class="zmdi zmdi-plus"></i>New Value Idea</button></a>
                     @endif
                 </div>
             </div>
@@ -54,7 +54,7 @@
                             </div>
                             <div class="text">
                                 <h2>{{ $stats_array["landing_pages"] }}</h2>
-                                <span>Total Landing Pages</span>
+                                <span>Total Opt-in Pages</span>
                             </div>
                         </div>
                     </div>
@@ -70,8 +70,8 @@
                         <thead>
                             <tr>
                                 <th>Created On</th>
-                                <th>Idea Campaign</th>
-                                <th>Landing Pages</th>
+                                <th>Value Idea</th>
+                                <th>Opt-in Pages</th>
                                 <th>Reach</th>
                                 <th>Impressions</th>
                                 <th>Signups</th>

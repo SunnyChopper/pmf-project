@@ -69,8 +69,8 @@ class DashboardController extends Controller
     	return view('dashboard.index')->with('page_title', $page_title)->with('user', $user)->with('ideas', $ideas)->with('stats_array', $stats_array);
     }
 
-    public function landing_pages() {
-    	$page_title = "Landing Pages";
+    public function optin_pages() {
+    	$page_title = "Opt-in Pages";
 
         // Check if logged out
         if (Session::get('logged_in') == NULL) {
@@ -89,7 +89,7 @@ class DashboardController extends Controller
         // Get landing pages from user
         $landing_pages = LandingPage::where('user_id', $user_id)->get();
 
-    	return view('dashboard.landing-pages')->with('page_title', $page_title)->with('user', $user)->with('landing_pages', $landing_pages);
+    	return view('dashboard.opt-in-pages')->with('page_title', $page_title)->with('user', $user)->with('landing_pages', $landing_pages);
     }
 
     public function signups() {

@@ -14,12 +14,12 @@
 			@csrf
 			<div class="row">
 				<div class="col-lg-6 col-md-8 col-sm-12 col-xs-12">
-					<h4>Landing Page Meta Information</h4>
+					<h4>Opt-in Page Meta Information</h4>
 					<ul class="list-group mt-16">
 						<li class="list-group-item">
 							<div class="form-group">
 								<h5>Select Value Idea<span class='red'>*</span>:</h5>
-								<p class="mb-2">The landing page will belong to the chosen Value Idea.</p>
+								<p class="mb-2">The opt-in page will belong to the chosen Value Idea.</p>
 								<select form="create_lp_form"  class="form-control" name="idea_id">
 									@foreach($ideas as $idea)
 										<option value="{{ $idea->id }}">{{ $idea->name }}</option>
@@ -30,8 +30,8 @@
 
 						<li class="list-group-item">
 							<div class="form-group">
-								<h5>Name of Landing Page<span class="red">*</span>:</h5>
-								<p class="mb-2">This is how you will identify the landing page in your admin dashboard. Your audience will not see this.</p>
+								<h5>Name of Opt-in Page<span class="red">*</span>:</h5>
+								<p class="mb-2">This is how you will identify the opt-in page in your admin dashboard. Your audience will not see this.</p>
 								<input type="text" name="landing_page_name" class="form-control" required>
 							</div>
 						</li>
@@ -39,7 +39,7 @@
 						<li class="list-group-item">
 							<div class="form-group">
 								<h5>Google Analytics Code</h5>
-								<p class="mb-2">If you would like to track users that come to your landing page using Google Analytics, you can input the code snippet here.</p>
+								<p class="mb-2">If you would like to track users that come to your opt-in page using Google Analytics, you can input the code snippet here.</p>
 								<textarea form="create_lp_form" name="google_analytics_code" class="form-control" rows="4"></textarea>
 							</div>
 						</li>
@@ -50,7 +50,7 @@
 			@if(count($ideas) != 0)
 			<div class="row mt-16">
 				<div class="col-lg-8 col-md-10 col-sm-12 col-xs-12">
-					<h4>Landing Page Fields</h4>
+					<h4>Opt-in Page Fields</h4>
 						<ul class="list-group mt-16 mb-16">
 							@foreach($xml_tags as $tag => $tag_data)
 								<?php
@@ -97,7 +97,7 @@
 
 					<div class="row">
 						<div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
-							<input type="submit" class="btn btn-primary" value="Preview Landing Page">
+							<input type="submit" class="btn btn-primary" value="Preview Opt-in Page">
 						</div>
 					</div>
 				</div>

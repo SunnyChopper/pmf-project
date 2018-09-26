@@ -19,7 +19,7 @@
                             	{{-- <th>Date</th> --}}
                                 <th>Name</th>
                                 <th>Email</th>
-                                <th>Landing Page</th>
+                                <th>Opt-in Page</th>
                                 {{-- <th>Marketing Consent</th> --}}
                                 <th></th>
                             </tr>

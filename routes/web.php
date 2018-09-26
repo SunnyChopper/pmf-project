@@ -41,7 +41,7 @@ Route::get('/onboarding/share', 'OnboardingController@share');
 
 // Dashboard
 Route::get('/dashboard/', 'DashboardController@index');
-Route::get('/dashboard/landing-pages/', 'DashboardController@landing_pages');
+Route::get('/dashboard/optin-pages/', 'DashboardController@optin_pages');
 Route::get('/dashboard/signups/', 'DashboardController@signups');
 Route::get('/trial-ended', 'DashboardController@trial_ended');
 
