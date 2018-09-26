@@ -268,6 +268,41 @@ input[type=text], input[type=email], input[type=tel], input[type=date] {
 	border-top-left-radius: 8px;
 }
 
+.addon-box {
+	border-bottom: 3px solid #CFCFCF;
+	border-radius: 8px;
+	background-color: white;
+	transition: 0.5s all;
+	-webkit-transition: 0.5s all;
+}
+
+.addon-box:hover {
+	cursor: pointer;
+	background-color: #F4F4F4;
+}
+
+.addon-box > .addon-image > img {
+	width: 100%;
+	height: auto;
+	border-top-right-radius: 8px;
+	border-top-left-radius: 8px;
+}
+
+.addon-box > .addon-description {
+	padding: 16px;
+}
+
+.addon-box > .addon-description > hr {
+	margin-top: 8px;
+	margin-bottom: 8px;
+}
+
+.addon-box > .addon-description > #price {
+	color: green;
+	margin-top: 8px;
+	margin-bottom: 0px;
+}
+
 .feature-box {
 	padding: 16px;
 	border: 2px solid #ECECEC;

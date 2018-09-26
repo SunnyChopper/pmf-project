@@ -44,6 +44,7 @@ Route::get('/dashboard/', 'DashboardController@index');
 Route::get('/dashboard/optin-pages/', 'DashboardController@optin_pages');
 Route::get('/dashboard/signups/', 'DashboardController@signups');
 Route::get('/trial-ended', 'DashboardController@trial_ended');
+Route::get('/dashboard/addons/', 'DashboardController@addons');
 
 // Ideas
 Route::get('/dashboard/idea/create', 'DashboardController@create_idea');

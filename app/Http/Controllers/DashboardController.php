@@ -115,6 +115,26 @@ class DashboardController extends Controller
         return view('dashboard.signups')->with('page_title', $page_title)->with('user', $user)->with('signups', $signups);
     }
 
+    public function addons() {
+        $page_title = "Addons";
+
+        // Check if logged out
+        if (Session::get('logged_in') == NULL) {
+            return redirect(url('/login'));
+        }
+
+        // Check for trial
+        if ($this->has_trial_ended() == "Yes") {
+            return redirect(url('/trial-ended'));
+        }
+
+        // Get user
+        $user = $this->get_user();
+        $user_id = $user->id;
+
+        return view('dashboard.addons')->with('page_title', $page_title)->with('user', $user);
+    }
+
     public function create_idea() {
         $page_title = "New Idea";
 
