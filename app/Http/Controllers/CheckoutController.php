@@ -32,6 +32,13 @@ class CheckoutController extends Controller
 				// Calculate the date when trial ends
 				$next_payment_date = date("Y-m-d", strtotime("+" . $plan->trial_days . " days"));
 
+				// Check to see if referral tags
+				if (Session::has('u_ref')) {
+					$user_ref = Session::get('u_ref');
+				} else {
+					$user_ref = "";
+				}
+
 				// Simply create the user
 				$user = new User;
 				$user->first_name = $data->first_name;
@@ -45,6 +52,7 @@ class CheckoutController extends Controller
 				$user->next_payment_date = $next_payment_date;
 				$user->card_error = $card_error;
 				$user->is_active = 1;
+				$user->user_ref = $user_ref;
 				$user->save();
 
 				// Create user analytics object
@@ -103,6 +111,13 @@ class CheckoutController extends Controller
 					$card_error = 0;
 					$trial = 0;
 
+					// Check to see if referral tags
+					if (Session::has('u_ref')) {
+						$user_ref = Session::get('u_ref');
+					} else {
+						$user_ref = "";
+					}
+
 					// Create the user
 					$user = new User;
 					$user->first_name = $data->first_name;
@@ -116,6 +131,7 @@ class CheckoutController extends Controller
 					$user->next_payment_date = $next_payment_date;
 					$user->card_error = $card_error;
 					$user->is_active = 1;
+					$user->user_ref = $user_ref;
 					$user->save();
 
 					// Create user analytics object

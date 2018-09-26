@@ -57,6 +57,11 @@
 		<![endif]-->
 		<link href="{{ URL::asset('css/style.css') }}" rel="stylesheet" media="all">
 
+		<!-- Check for referral tag -->
+		@if(Request::has('u_ref'))
+			{{ Session::put('u_ref', Request::get('u_ref')) }}
+		@endif
+
 		<!-- Global site tag (gtag.js) - Google Analytics -->
 		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-125797404-1"></script>
 		<script>
