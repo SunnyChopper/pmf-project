@@ -42,7 +42,11 @@
 										<td>{{ $landing_page->idea_name }}</td>
 										<td>{{ $landing_page->reach }}</td>
 										<td>{{ $landing_page->impressions }}</td>
+										@if($landing_page->manychat != 1)
 										<td>{{ $landing_page->signups }}</td>
+										@else
+										<td><a href="https://www.manychat.com">Check ManyChat</a></td>
+										@endif
 										<td>{{ $landing_page->created_at->format('F d, Y') }}</td>
 									</tr>
 								@endforeach

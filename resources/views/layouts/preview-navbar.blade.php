@@ -14,7 +14,7 @@
                     <input type="hidden" name="landing_page_name" value="{{ $data->landing_page_name }}">
                     <input type="hidden" name="idea_id" value="{{ $data->idea_id }}">
                     @foreach($xml_tags as $tag => $tag_info)
-                        <input type="hidden" name="{{ $tag }}" value="{{ $data->$tag }}">
+                        <input type="hidden" name="{{ $tag }}" value='{{ $data->$tag }}'>
                     @endforeach
                     <input type="submit" class="btn btn-sm btn-primary" style="float: right;" value="Publish">
                 </form>

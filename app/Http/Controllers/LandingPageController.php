@@ -72,6 +72,12 @@ class LandingPageController extends Controller
     	// Save Google Analytics code to Session
     	Session::put('google_analytics_code', $data->google_analytics_code);
     	Session::save();
+
+    	// Check to see if ManyChat
+    	if (isset($data->manychat_code)) {
+    		Session::put('manychat_code', $data->manychat_code);
+    		Session::put('manychat_button_code', $data->manychat_button_code);
+    	}
 		
 		// Check to see if in edit mode
 		if ($mode == "edit") {
@@ -96,11 +102,22 @@ class LandingPageController extends Controller
 		$landing_page_preview_link = "";
 
 		// Get Google Analytics code
-		$google_analytics_code = Session::get('google_analytics_code');
+		if (Session::has('google_analytics_code')) {
+			$google_analytics_code = Session::get('google_analytics_code');
+		} else {
+			$google_analytics_code = "";
+		}
 
 		// Get template info
     	$template = Template::where('id', $template_id)->first();
     	$path_to_html = "templates." . $template->path_to_html;
+
+    	// Check to see if ManyChat included
+    	if (Session::has('manychat_code')) {
+    		$manychat = 1;
+    	} else {
+    		$manychat = 0;
+    	}
 
 		// Save into database
 		$landing_page = new LandingPage;
@@ -109,12 +126,20 @@ class LandingPageController extends Controller
 		$landing_page->idea_name = $idea_name;
 		$landing_page->name = $landing_page_name;
 		$landing_page->landing_page_template_path = $path_to_html;
+		$landing_page->reach = 0;
 		$landing_page->impressions = 0;
 		$landing_page->signups = 0;
 		$landing_page->template_id = $template_id;
 		$landing_page->google_analytics_code = $google_analytics_code;
+		$landing_page->manychat = $manychat;
 		$landing_page->save();
 		$landing_page_id = $landing_page->id;
+
+		// Forget about ManyChat so there are no repeats
+		if (Session::has('manychat_code')) {
+			Session::forget('manychat_code');
+			Session::save();
+		}
 
 		// Update user analytics
 		$analytics = UserAnalytics::where('user_id', $user_id)->first();
@@ -155,7 +180,7 @@ class LandingPageController extends Controller
 		$logging->insert($analytics_event);
 
 		// Redirect back to landing pages
-		return redirect(url('/dashboard/landing-pages/'));
+		return redirect(url('/dashboard/optin-pages/'));
 	}
 
 	public function view($user_id, $landing_page_id) {

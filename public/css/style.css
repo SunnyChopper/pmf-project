@@ -240,6 +240,8 @@ input[type=text], input[type=email], input[type=tel], input[type=date] {
 	background-color: white;
 	transition: 0.5s all;
 	-webkit-transition: 0.5s all;
+	margin-top: 8px;
+	margin-bottom: 8px;
 }
 
 .template-box:hover {
