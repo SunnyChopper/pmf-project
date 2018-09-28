@@ -6,6 +6,8 @@
 		<div class="row">
 			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 				<h2>Signups</h2>
+                <p class="mt-2">These are the leads that have been collected from opt-in pages that do not use ManyChat. You may delete data if requested by the user.</p>
+                <hr />
 			</div>
 		</div>
 
