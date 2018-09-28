@@ -45,6 +45,15 @@
 				</div>
 
 				<div class="row">
+					<div class="col-lg-4 offset-lg-4 col-md-6 offset-md-3 col-sm-12 col-xs-12">
+						<div class="videoWrapper">
+						    <!-- Copy & Pasted from YouTube -->
+						    <iframe width="560" height="349" src="http://www.youtube.com/embed/{{ $xml_data['youtube_video_id'] }}" frameborder="0" allowfullscreen></iframe>
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
 					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
 						<h4 id="benefit_title">{{ $xml_data["benefit_title"] }}</h4>
 					</div>

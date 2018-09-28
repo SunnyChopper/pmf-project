@@ -19,6 +19,10 @@
 			<!-- Google Analytics code -->
 			{!! $landing_page->google_analytics_code !!}
 		@endif
+
+		@if(Request::get('ref'))
+			{{ Session::put('landing_page_ref', Request::get('ref')) }}
+		@endif
 	</head>
 	<body>
 		<div style="width: 100%; height: 100%;" class="parent">
