@@ -37,7 +37,7 @@ Route::get('/onboarding/edit-template/{template_id}', 'OnboardingController@edit
 Route::post('/onboarding/render-optin-page', 'OnboardingController@renderOptinPage');
 Route::post('/onboarding/create-optin-page', 'OnboardingController@createOptinPage');
 Route::get('/onboarding/share', 'OnboardingController@share');
-
+Route::get('/onboarding/skip', 'OnboardingController@skip');
 
 // Dashboard
 Route::get('/dashboard/', 'DashboardController@index');

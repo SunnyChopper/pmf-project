@@ -55,8 +55,8 @@
 				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 					<h2 class="text-center">Welcome to Optin Dev</h2>
 
-					<p class="text-center">Let's get you started</p>
-
+					<p class="text-center mb-2">Let's get you started</p>
+					<p class="text-center"><a href="/onboarding/skip">Skip setup process</a></p>
 					<div class="row mt-8 mb-8">
 						<div class="col-lg-4 offset-lg-4 col-md-6 offset-md-3 col-sm-8 offset-sm-2 col-xs-12">
 							<div class="progress">

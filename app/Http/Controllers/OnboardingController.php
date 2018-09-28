@@ -219,6 +219,24 @@ class OnboardingController extends Controller
 		return view('onboarding.pages.share')->with('page_title', $page_title)->with('step_number', $step_number)->with('url', $url);
 	}
 
+	/* --------------------- *\
+		Skip
+	\* --------------------- */
+
+	public function skip() {
+		// Get user data
+		$user = $this->get_user();
+		$user_id = $user->id;
+
+		// Update analytics
+		$user_analytics = UserAnalytics::where('user_id', $user_id)->first();
+		$user_analytics->onboard = 1;
+		$user_analytics->save();
+
+		// Redirect
+		return redirect(url('/dashboard/'));
+	}
+
     /* --------------------- *\
 		Private Functions
 	\* --------------------- */
