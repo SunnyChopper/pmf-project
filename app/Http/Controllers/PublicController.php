@@ -73,7 +73,7 @@ class PublicController extends Controller
 
         $email_data = array(
             "first_name" => "Sunny",
-            "header_text" => "Contact Submission"
+            "header_text" => "Contact Submission",
             "body" => $body
         );
 
