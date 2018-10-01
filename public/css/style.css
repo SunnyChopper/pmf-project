@@ -456,4 +456,16 @@ input[type=text], input[type=email], input[type=tel], input[type=date] {
 	#page_header {
 		margin-bottom: 350px;
 	}
+
+	.au-btn {
+		margin-bottom: 32px;
+	}
+
+	.header-desktop {
+		display: none;
+	}
+
+	#admin_footer {
+		margin-bottom: 64px;
+	}
 }	
