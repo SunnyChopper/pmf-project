@@ -61,6 +61,29 @@ class PublicController extends Controller
         return view('public.login')->with('page_title', $page_title)->with('page_header', $page_header);
     }
 
+    public function submit_contact(Request $data) {
+        // Get the data
+        $name = $data->name;
+        $reply_email = $data->email;
+        $message = $data->message;
+
+        // Create the body
+        $body = "<p>New contact form submission from <b>" . $name . "</b> <" . $reply_email . ">. Their message was the following: </p>";
+        $body .= $message;
+
+        $email_data = array(
+            "first_name" => "Sunny",
+            "header_text" => "Contact Submission"
+            "body" => $body
+        );
+
+        // Send mail
+        Mail::send('emails.notification', $email_data, function($message) use $email_data) {
+            $message->to("optindev@gmail.com", "OptinDev")->subject("🚀 Contact Form Submission 🚀");
+            $message->from("optindev@gmail.com", "OptinDev");
+        }
+    }
+
     public function test() {
         $data = array(
             "first_name" => "Sunny",

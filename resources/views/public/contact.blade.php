@@ -7,7 +7,8 @@
 		<div class="row">
 			<div class="col-lg-8 col-lg-offset-2 col-md-10 col-offset-md-1 col-sm-12 col-xs-12">
 				<div class="well">
-					<form id="contact_form">
+					<form action="/contact/submit" method="post" id="contact_form">
+						{{ crsf_field() }}
 						<div class="row">
 							<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 form-group">
 								<label>Name<span class="red">*</span>:</label>
@@ -23,7 +24,7 @@
 						<div class="row">
 							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-group">
 								<label>Message<span class="red">*</span>:</label>
-								<textarea form="contact_form" class="form-control" rows="4"></textarea>
+								<textarea form="contact_form" name="message" class="form-control" rows="4"></textarea>
 							</div>
 						</div>
 
