@@ -53,6 +53,14 @@ class PublicController extends Controller
         return view('public.contact')->with('page_title', $page_title)->with('page_header', $page_header);
     }
 
+    public function contact_thank_you() {
+        // Page data
+        $page_header = "Thank You";
+        $page_header = config('app.name') . " - " . $page_header;
+
+        return view('public.contact-thank-you')->with('page_title', $page_title)->with('page_header', $page_header);
+    }
+
     public function login() {
         // Page data
         $page_header = "Login";
@@ -68,7 +76,7 @@ class PublicController extends Controller
         $message = $data->message;
 
         // Create the body
-        $body = "<p>New contact form submission from <b>" . $name . "</b> <" . $reply_email . ">. Their message was the following: </p>";
+        $body = "<p>New contact form submission from <b>" . $name . "</b> with the reply email of: " . $reply_email . ".<br> Their message was the following: </p>";
         $body .= $message;
 
         $email_data = array(
@@ -82,6 +90,9 @@ class PublicController extends Controller
             $message->to("optindev@gmail.com", "OptinDev")->subject("🚀 Contact Form Submission 🚀");
             $message->from("optindev@gmail.com", "OptinDev");
         });
+
+        // Redirect to thank you page
+        return redirect(url('/contact/thank-you'));
     }
 
     public function test() {

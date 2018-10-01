@@ -19,6 +19,7 @@ Route::get('/', 'PublicController@index');
 Route::get('/solutions', 'PublicController@solutions');
 Route::get('/blog', 'PublicController@blog');
 Route::get('/contact', 'PublicController@contact');
+Route::get('/contact/thank-you', 'PublicController@contact_thank_you');
 Route::post('/contact/submit', 'PublicController@submit_contact');
 Route::get('/login', 'PublicController@login');
 
