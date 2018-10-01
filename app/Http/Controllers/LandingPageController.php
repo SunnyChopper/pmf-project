@@ -345,7 +345,7 @@ class LandingPageController extends Controller
 		$analytics->save();
 
 		// Redirect to landing pages
-		return redirect(url('/dashboard/landing-pages/'));
+		return redirect(url('/dashboard/optin-pages/'));
 	}
 
 	/* Private Helper Functions */

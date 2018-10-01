@@ -5,7 +5,7 @@
 		<div class="row">
 			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 				<h2 class="title-1">Create New Value Idea</h2>
-				<p class="mt-2">It is extremely important that you provide value to your audience so you can build a large following that you can then later sell to. Let's get started.</p>
+				<p class="mt-2">It is extremely important that you provide value to your audience so you can build a large following that you can then later leverage to further grow your brand or sell to. Let's get started.</p>
 				<hr />
 			</div>
 		</div>
@@ -24,7 +24,6 @@
 										<input type="text" name="name" class="form-control" required>
 									</div>
 								</li>
-
 								<li class="list-group-item">
 									<div class="form-group">
 										<h5>Description of Idea:</h5>
