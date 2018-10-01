@@ -8,7 +8,7 @@
 			<div class="col-lg-8 col-lg-offset-2 col-md-10 col-offset-md-1 col-sm-12 col-xs-12">
 				<div class="well">
 					<form action="/contact/submit" method="post" id="contact_form">
-						{{ crsf_field() }}
+						{{ csrf_field() }}
 						<div class="row">
 							<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 form-group">
 								<label>Name<span class="red">*</span>:</label>
