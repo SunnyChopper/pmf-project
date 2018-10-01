@@ -56,7 +56,7 @@ class PublicController extends Controller
     public function contact_thank_you() {
         // Page data
         $page_header = "Thank You";
-        $page_header = config('app.name') . " - " . $page_header;
+        $page_title = config('app.name') . " - " . $page_header;
 
         return view('public.contact-thank-you')->with('page_title', $page_title)->with('page_header', $page_header);
     }
