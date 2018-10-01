@@ -78,10 +78,10 @@ class PublicController extends Controller
         );
 
         // Send mail
-        Mail::send('emails.notification', $email_data, function($message) use $email_data) {
+        Mail::send('emails.notification', $email_data, function($message) use ($email_data) {
             $message->to("optindev@gmail.com", "OptinDev")->subject("🚀 Contact Form Submission 🚀");
             $message->from("optindev@gmail.com", "OptinDev");
-        }
+        });
     }
 
     public function test() {
