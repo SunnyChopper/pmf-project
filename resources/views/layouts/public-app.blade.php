@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<title>{{ $page_title }}</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 		<meta name="description" content="Helping personal brands grow their audience." />
 		<meta name="keywords" content="personal brands, personal branding, how to grow your personal brand" />
 		<meta name="author" content="OptinDev" />
@@ -83,6 +83,10 @@
 		
 		<div class="page">
 			@include('layouts.public-navbar')
+			<div id="colorlib-offcanvas">
+				<ul>
+				</ul>
+			</div>
 			@yield('content')
 		</div>
 
