@@ -25,6 +25,37 @@ use App\Custom\RefHandler;
 class LandingPageController extends Controller
 {
 
+	public function delete(Request $data) {
+		// Get landing page ID
+		$landing_page_id = $data->landing_page_id;
+
+		// Get landing page object
+		$landing_page = LandingPage::where('id', $landing_page_id)->first();
+		$landing_page->is_active = 0;
+		$landing_page->save();
+
+		// Update idea metrics
+		$idea_id = $landing_page->idea_id;
+		$idea = Idea::where('id', $idea_id)->first();
+		$idea->landing_pages = $idea->landing_pages - 1;
+		$idea->reach = $idea->reach - $landing_page->reach;
+		$idea->impressions = $idea->impressions - $landing_page->impressions;
+		$idea->signups = $idea->signups - $landing_page->signups;
+		$idea->save();
+
+		// Update user analytics
+		$user = $this->get_user();
+		$user_id = $user->id;
+		$user_analytics = UserAnalytics::where('user_id', $user_id)->first();
+		$user_analytics->number_of_impressions = $user_analytics->number_of_impressions - $landing_page->impressions;
+		$user_analytics->number_of_signups = $user_analytics->number_of_signups - $landing_page->signups;
+		$user_analytics->number_of_landing_pages = $user_analytics->number_of_landing_pages - 1;
+		$user_analytics->save();
+
+		// Redirect back
+		return redirect()->back();
+	}
+
 	public function choose_template() {
 		// Page details
 		$page_title = "Choose Landing Page Template";

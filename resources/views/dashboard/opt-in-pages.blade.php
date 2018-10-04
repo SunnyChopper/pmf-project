@@ -2,6 +2,7 @@
 
 @section('content')
 	@include('modals.copy-url-modal')
+	@include('modals.delete-optin-modal')
 	<div class="container-fluid">
 		<div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -32,9 +33,11 @@
 							</thead>
 							<tbody>
 								@foreach($landing_pages as $landing_page)
+									@if($landing_page->is_active == 1)
 									<tr>
 										<td>
 											<a href="/dashboard/lp/edit/{{ $landing_page->id }}" class="btn btn-sm btn-warning">Edit</a>
+											<button class="btn btn-sm btn-danger" id="{{ $landing_page->id }}" onclick="showDeleteOptinModal(this.id);">Delete</button>
 											<a href="/lp/{{ Session::get('user_id') }}/{{ $landing_page->id }}" class="btn btn-sm btn-primary">View</a>
 											<button class="btn btn-sm btn-success" id="{{ Session::get('user_id') }}/{{ $landing_page->id }}" onclick="showCopyURLModal(this.id);">Copy URL</button>
 										</td>
@@ -49,6 +52,7 @@
 										@endif
 										<td>{{ $landing_page->created_at->format('F d, Y') }}</td>
 									</tr>
+									@endif
 								@endforeach
 							</tbody>
 						</table>

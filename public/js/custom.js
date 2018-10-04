@@ -141,6 +141,15 @@ $("#copy_url_referrer").on('input', function() {
 	Modal functions
 \* -------------------------- */
 
+function showDeleteOptinModal(landing_page_id) {
+	// Set the hidden input
+	$("input[name=landing_page_id]").val(landing_page_id);
+
+	// Show the modal
+	$("#delete_optin_page_modal").appendTo("body");
+	$("#delete_optin_page_modal").modal('show');
+}
+
 function showCopyURLModal(url_extension) {
 	// Create the url
 	var host = document.location.host;
