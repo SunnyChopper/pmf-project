@@ -15,6 +15,15 @@ $(".create-signup").on('click', function() {
 	var landing_page_id = $("input[name=landing_page_id]").val();
 	var marketing_consent = 1;
 
+	// Marketing consent check
+	if ($("input[name=marketing_consent]").length) {
+		if ($("input[name=marketing_consent]").is(":checked")) {
+			marketing_consent = 1;
+		} else {
+			marketing_consent = 0;
+		}
+	}
+
 	console.log("Token: " + _token);
 	console.log("Name: " + name);
 	console.log("Email: " + email);

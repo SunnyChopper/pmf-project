@@ -74,6 +74,20 @@
 					</div>
 				</div>
 
+				@if(isset($xml_data["checkbox_text"]) && ($xml_data["checkbox_text"] != ""))
+				<div class="row mt-8 mb-16">
+						<div class="col-lg-4 offset-lg-4 col-md-6 offset-md-3 col-sm-12 col-xs-12">
+							<table cellpadding="1" cellspacing="1" style="width: 100%;">
+								<tr>
+									<td style="text-align: center; vertical-align: middle;">
+										<input type="checkbox" name="marketing_consent"> {{ $xml_data["checkbox_text"] }}
+									</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+				@endif
+
 				<div class="row mt-8">
 					<div class="col-lg-2 offset-lg-5 col-md-4 offset-md-4 col-sm-12 col-xs-12">
 						<input value="{{ $xml_data["button_text"] }}" type="submit" class="btn btn-primary center-button create-signup"> 

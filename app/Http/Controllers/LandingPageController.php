@@ -192,7 +192,16 @@ class LandingPageController extends Controller
     	$values = array();
     	foreach($xml_tags as $tag => $value) {
     		array_push($tags, $tag);
-    		array_push($values, $data->$tag);
+    		if ($tag == "checkbox_text") {
+    			if (isset($data->$tag)) {
+    				array_push($values, $data->$tag);
+    			} else {
+    				array_push($values, "");
+    			}
+    		} else {
+    			array_push($values, $data->$tag);
+    		}
+    		
     	}
 
 		// Generate XML
