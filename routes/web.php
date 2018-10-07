@@ -53,6 +53,7 @@ Route::get('/dashboard/idea/create', 'DashboardController@create_idea');
 Route::get('/dashboard/idea/edit/{idea_id}', 'DashboardController@edit_idea');
 Route::post('/idea/create', 'IdeasController@create');
 Route::post('/idea/edit/{idea_id}', 'IdeasController@edit');
+Route::post('/idea/delete', 'IdeasController@delete');
 
 // Landing Pages
 Route::get('/dashboard/lp/create/choose-template/', 'LandingPageController@choose_template');

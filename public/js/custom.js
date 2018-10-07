@@ -141,6 +141,15 @@ $("#copy_url_referrer").on('input', function() {
 	Modal functions
 \* -------------------------- */
 
+function showDeleteIdeaModal(idea_id) {
+	// Set the hidden input
+	$("input[name=idea_id]").val(idea_id);
+
+	// Show the modal
+	$("#delete_idea_modal").appendTo("body");
+	$("#delete_idea_modal").modal('show');
+}
+
 function showDeleteOptinModal(landing_page_id) {
 	// Set the hidden input
 	$("input[name=landing_page_id]").val(landing_page_id);

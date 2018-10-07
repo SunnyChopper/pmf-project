@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+    @include('modals.delete-idea-modal')
 	<div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
@@ -80,6 +81,7 @@
                         </thead>
                         <tbody>
                             @foreach($ideas as $idea)
+                                @if($idea->is_active == 1)
                                 <tr>
                                     <td>{{ $idea->created_at->format('F d, Y') }}</td>
                                     <td>{{ $idea->name }}</td>
@@ -87,8 +89,12 @@
                                     <td>{{ $idea->reach }}</td>
                                     <td>{{ $idea->impressions }}</td>
                                     <td>{{ $idea->signups }}</td>
-                                    <td><a href="/dashboard/idea/edit/{{ $idea->id }}" class="btn btn-warning">Edit</a></td>
+                                    <td>
+                                        <a href="/dashboard/idea/edit/{{ $idea->id }}" class="btn btn-sm btn-warning">Edit</a>
+                                        <button id="{{ $idea->id }}" onclick="showDeleteIdeaModal(this.id);" class="btn btn-sm btn-danger">Delete</button>
+                                    </td>
                                 </tr>
+                                @endif
                             @endforeach
                         </tbody>
                     </table>

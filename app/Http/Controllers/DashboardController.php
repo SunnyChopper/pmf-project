@@ -56,9 +56,11 @@ class DashboardController extends Controller
             $landing_pages = 0;
 
             foreach ($ideas as $idea) {
-                $impressions += $idea->impressions;
-                $signups += $idea->signups;
-                $landing_pages += $idea->landing_pages;
+                if ($idea->is_active == 1) {
+                    $impressions += $idea->impressions;
+                    $signups += $idea->signups;
+                    $landing_pages += $idea->landing_pages;
+                }
             }
 
             $stats_array["impressions"] = $impressions;

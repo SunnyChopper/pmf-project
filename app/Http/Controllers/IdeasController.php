@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Session;
 use App\Idea;
 use App\UserAnalytics;
 use App\User;
+use App\LandingPage;
 
 use App\Custom\Logging;
 
@@ -45,6 +46,38 @@ class IdeasController extends Controller
 
     	// Redirect to dashboard
     	return redirect(url('/dashboard/'));
+    }
+
+    public function delete(Request $data) {
+        // Get data
+        $idea_id = $data->idea_id;
+
+        // Get user id
+        $user = $this->get_user();
+        $user_id = $user->id;
+
+        // Get idea data and "delete"
+        $idea = Idea::where('id', $idea_id)->first();
+        $idea_landing_pages = $idea->landing_pages;
+        $idea->is_active = 0;
+        $idea->save();
+
+        // Get all landing pages for the idea and "delete" them
+        $landing_pages = LandingPage::where('idea_id', $idea->id)->get();
+        foreach ($landing_pages as $landing_page) {
+            $landing_page->is_active = 0;
+            $landing_page->save();
+        }
+
+        // Update user analytics
+        $analytics = UserAnalytics::where('user_id', $user_id)->first();
+        $analytics->number_of_ideas = $analytics->number_of_ideas - 1;
+        $analytics->number_of_landing_pages = $analytics->number_of_landing_pages - $idea_landing_pages;
+        $analytics->number_of_impressions = $analytics->number_of_impressions - $idea->impressions;
+        $analytics->save();
+
+        // Redirect back
+        return redirect()->back();
     }
 
     public function edit(Request $data, $idea_id) {
