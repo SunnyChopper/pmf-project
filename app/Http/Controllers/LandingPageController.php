@@ -163,6 +163,7 @@ class LandingPageController extends Controller
 		$landing_page->template_id = $template_id;
 		$landing_page->google_analytics_code = $google_analytics_code;
 		$landing_page->manychat = $manychat;
+		$landing_page->privacy_policy_link = $data->privacy_policy_link;
 		$landing_page->save();
 		$landing_page_id = $landing_page->id;
 
@@ -365,6 +366,18 @@ class LandingPageController extends Controller
 			// Log the event
 			$edit_google_analytics_code_event = "User " . $user_id . " edited their Google Analytics code for the landing page with ID of " . $landing_page_id;
 			$logging->insert($edit_google_analytics_code_event);
+		}
+
+		// Check if privacy policy link changed
+		$new_privacy_policy_link = $data->privacy_policy_link;
+		if ($new_privacy_policy_link != $landing_page->privacy_policy_link) {
+			// Update
+			$landing_page->privacy_policy_link = $data->privacy_policy_link;
+			$landing_page->save();
+
+			// Log the event
+			$edit_privacy_policy_link = "User " . $user_id . " edited their privacy policy link for the landing page with ID of " . $landing_page_id;
+			$logging->insert($edit_privacy_policy_link);
 		}
 
 		// Get XML fields for the template

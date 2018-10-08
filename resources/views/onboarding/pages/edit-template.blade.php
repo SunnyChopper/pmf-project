@@ -29,6 +29,16 @@
 						<li class="list-group-item">
 							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 								<div class="form-group mt-8">
+									<h5>Privacy Policy Link:</h5>
+									<p class="mb-2">Having a privacy policy link is not required, however, if you want to remain GDRP compliant, it is important to include the URL to your privacy policy. OptinDev is not responsible if you do not comply to GDPR regulations.</p>
+									<input type="text" name="privacy_policy_link" value="{{ $landing_page->privacy_policy_link }}" class="form-control" required>
+								</div>
+							</div>
+						</li>
+
+						<li class="list-group-item">
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								<div class="form-group mt-8">
 									<h5>Google Analytics Code:</h5>
 									<p class="mb-2">If you would like to track users that come to your landing page using Google Analytics, you can input the code snippet here.</p>
 									<textarea form="create_lp_form" name="google_analytics_code" class="form-control" rows="4"></textarea>

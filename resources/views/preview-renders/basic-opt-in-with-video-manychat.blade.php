@@ -62,6 +62,14 @@
 						{!! $data->manychat_button_code !!}
 					</div>
 				</div>
+
+				@if($data->privacy_policy_link != "")
+				<div class="row	">
+					<div class="col-lg-2 offset-lg-5 col-md-4 offset-md-4 col-sm-12 col-xs-12">
+						<p class="text-center mt-2 mb-8"><small><a style="color: #8A8A8A;" href="{{ $data->privacy_policy_link }}">Privacy Policy</a></small></p> 
+					</div>
+				</div>
+				@endif
 			</div>
 		</div>
 
